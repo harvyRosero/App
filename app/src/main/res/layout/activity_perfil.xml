@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Perfil">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/gris">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10sp"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout_botones"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:background="@color/gris"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_home2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/img_btn"
+            android:src="@mipmap/home1" />
+
+        <ImageButton
+            android:id="@+id/btn_fav2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="2.5sp"
+            android:layout_marginRight="2.5sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/img_btn"
+            android:src="@mipmap/fav1" />
+
+        <ImageButton
+            android:id="@+id/btn_perfil2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2.5sp"
+            android:layout_marginLeft="2.5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:background="#FFEB3B"
+            android:contentDescription="@string/img_btn"
+            android:src="@mipmap/perfil1" />
+
+        <ImageButton
+            android:id="@+id/btn_conf2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginEnd="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/img_btn"
+            android:src="@mipmap/cong1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_latout_perfil_img"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="165dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/img_perfil"
+            app:srcCompat="@mipmap/foto_perfil" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20sp"
+            android:layout_weight="2"
+            android:text="@string/user"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lenar_layout_info_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="491dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/info_email"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginBottom="10sp"
+            android:text="@string/info_cel"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword4"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="@string/nueva_pass"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword5"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_marginBottom="10sp"
+            android:ems="10"
+            android:hint="@string/txt_repetir_password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:backgroundTint="#2196F3"
+            android:text="@string/btn_enviar"
+            tools:targetApi="lollipop" />
+    </LinearLayout>
+
+</RelativeLayout>

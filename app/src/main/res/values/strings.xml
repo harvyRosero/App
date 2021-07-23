@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Tocayanat</string>
+    <string name="btn_olvide_pass">Olvide mi contraseña</string>
+    <string name="img_btn">img_botom</string>
+    <string name="logo">img_logo</string>
+    <string name="txt_email">Gmail</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_repetir_password">Repetir contraseña</string>
+    <string name="ingresar_email">ingresar email</string>
+    <string name="btn_ing">Ingresar</string>
+    <string name="btn_reg">Registrarse</string>
+    <string name="txt_numero">Celular</string>
+    <string name="btn_atras">Atras</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="userName">Usuario</string>
+    <string name="items">items-image</string>
+    <string name="nombre_app">Tocayanat</string>
+    <string name="img_perfil">foto_perfil</string>
+    <string name="user">Nombre de usuario</string>
+    <string name="info_email">Informacion email</string>
+    <string name="info_cel">Info telefono</string>
+    <string name="nueva_pass">Nueva contraseña</string>
+    <string name="colombia">Colombia</string>
+    <string name="activo">Activo</string>
+</resources>

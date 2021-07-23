@@ -1,7 +1,6 @@
 package com.example.myapplication3;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,36 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity implements RecyclerAdapter.list_item_click {
+public class MainActivity2 extends AppCompatActivity  {
 
     ImageButton btn_fav, btn_perfil, btn_conf;
-
-    private RecyclerView recycler_view_lugares;
-    private static final int LISTA_NUMEROS = 100;
-    private Toast mToast;
-
+    List<list_element> elements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        recycler_view_lugares = findViewById(R.id.list_recycler_view);
-        recycler_view_lugares.addItemDecoration(new DividerItemDecoration(
-                this , DividerItemDecoration.VERTICAL));
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recycler_view_lugares.setLayoutManager(linearLayoutManager);
-
-        RecyclerAdapter mAdapter = new RecyclerAdapter(LISTA_NUMEROS, this);
-        recycler_view_lugares.setAdapter(mAdapter);
-
-
+        init();
 
         //funciones botones home
 
@@ -70,15 +54,21 @@ public class MainActivity2 extends AppCompatActivity implements RecyclerAdapter.
         });
     }
 
+    public void init(){
+        elements = new ArrayList<>();
+        elements.add(new list_element( "Peñol", "Antioquia", "descripcion..."));
+        elements.add(new list_element("Caño Cristales", "Meta", "descripcion..."));
+        elements.add(new list_element("Catedral de zipaquira", "Zipaquira", "descripcion..."));
+        elements.add(new list_element( "Cerro Azul", "Guaviare", "descripcion..."));
+        elements.add(new list_element( "Puerto Nariño", "Amazonas", "descripcion..."));
 
-    @Override
-    public void onListItemClick(int clickedItem) {
-        if(mToast!= null){
-            mToast.cancel();
-        }
-
-        String mensajeToast = "item "+ clickedItem +" ha sido clickeado";
-        mToast = Toast.makeText(this, mensajeToast, Toast.LENGTH_SHORT);
-        mToast.show();
+        ListAdapter listAdapter = new ListAdapter(elements, this);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_lista_lugares);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
     }
+
+
+
 }

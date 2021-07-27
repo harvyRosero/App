@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/logo_001"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication3">
+        <activity android:name=".Detalles"></activity>
         <activity
             android:name=".Splash"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -18,13 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecuperarContr" />
-        <activity android:name=".Registro" />
+        <activity
+            android:name=".RecuperarContr"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Registro"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Configuracion" />
         <activity android:name=".Perfil" />
         <activity android:name=".Favoritos" />
         <activity android:name=".MainActivity2" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

@@ -15,7 +15,9 @@ import java.util.List;
 public class MainActivity2 extends AppCompatActivity  {
 
     ImageButton btn_fav, btn_perfil, btn_conf;
-    List<list_element> elements;
+    List<List_element> elements;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,16 @@ public class MainActivity2 extends AppCompatActivity  {
 
     public void init(){
         elements = new ArrayList<>();
-        elements.add(new list_element( "Peñol", "Antioquia", "descripcion..."));
-        elements.add(new list_element("Caño Cristales", "Meta", "descripcion..."));
-        elements.add(new list_element("Catedral de zipaquira", "Zipaquira", "descripcion..."));
-        elements.add(new list_element( "Cerro Azul", "Guaviare", "descripcion..."));
-        elements.add(new list_element( "Puerto Nariño", "Amazonas", "descripcion..."));
+        elements.add(new List_element( "Peñol", "Antioquia",
+                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
+        elements.add(new List_element("Caño Cristales", "Meta",
+                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
+        elements.add(new List_element("Catedral de zipaquira", "Zipaquira",
+                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
+        elements.add(new List_element( "Cerro Azul", "Guaviare",
+                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
+        elements.add(new List_element( "Puerto Nariño", "Amazonas",
+                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
 
         ListAdapter listAdapter = new ListAdapter(elements, this);
         RecyclerView recyclerView = findViewById(R.id.recycler_view_lista_lugares);
@@ -68,7 +75,5 @@ public class MainActivity2 extends AppCompatActivity  {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
     }
-
-
 
 }

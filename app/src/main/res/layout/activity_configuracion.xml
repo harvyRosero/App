@@ -14,9 +14,9 @@
 
         <SearchView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_margin="10sp"
-            android:background="@color/white"/>
+            android:background="@color/white" />
     </LinearLayout>
 
 
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="55dp"
         android:background="@color/gris"
         android:orientation="horizontal">
 
@@ -94,9 +94,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="445dp"
-        android:text="Salir" />
+        android:layout_marginStart="125dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="465dp"
+        android:text="Cerrar sesion" />
 
 </RelativeLayout>

@@ -1,13 +1,17 @@
 package com.example.myapplication3;
 
-public class list_element {
+import android.widget.ImageButton;
+
+import java.io.Serializable;
+
+public class List_element implements Serializable {
 
     public String name;
     public String city;
     public String status;
 
-
-    public list_element( String name, String city, String status) {
+    //lista de elementos
+    public List_element(String name, String city, String status) {
 
         this.name = name;
         this.city = city;
@@ -37,4 +41,7 @@ public class list_element {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
+    //fin lista de elementos
 }

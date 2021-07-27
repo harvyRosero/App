@@ -15,9 +15,9 @@
 
         <SearchView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_margin="10sp"
-            android:background="@color/white"/>
+            android:background="@color/white" />
     </LinearLayout>
 
 
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="55dp"
         android:background="@color/gris"
         android:orientation="horizontal">
 
@@ -90,14 +90,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_lista_lugares"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="612dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="136dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="119dp"
         android:layout_marginBottom="0dp"
         android:background="#D1D6D8">
 

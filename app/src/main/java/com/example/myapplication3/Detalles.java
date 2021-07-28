@@ -9,7 +9,6 @@ import android.widget.TextView;
 public class Detalles extends AppCompatActivity {
 
     TextView tv_datos, tv_ubicacion, tv_descrip;
-    private List_element itemDetalle;
 
 
     @Override

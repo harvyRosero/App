@@ -28,15 +28,6 @@ public class Favoritos extends AppCompatActivity  {
 
     ImageButton btn_home, btn_perfil, btn_config;
 
-
-    DatabaseReference ref;
-    ArrayList<Lugares> lista;
-    RecyclerView rv;
-    SearchView search_lugar;
-    AdapterLugar adapter;
-
-    LinearLayoutManager lm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,61 +60,7 @@ public class Favoritos extends AppCompatActivity  {
             }
         });
 
-        ref = FirebaseDatabase.getInstance().getReference().child("lugares");
-        rv = findViewById(R.id.recyclerfav);
-        search_lugar = findViewById(R.id.searchView_fav);
-        lm = new LinearLayoutManager(this);
-
-        rv.setLayoutManager(lm);
-        lista = new ArrayList<>();
-        adapter = new AdapterLugar(lista);
-        rv.setAdapter(adapter);
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                        Lugares lg = snapshot1.getValue(Lugares.class);
-                        lista.add(lg);
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull  DatabaseError error) {
-
-            }
-        });
-
-        search_lugar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                buscar(newText);
-                return true;
-            }
-        });
-
-
-
     }
 
-    private void buscar(String newText) {
-        ArrayList<Lugares> miLista = new ArrayList<>();
-        for(Lugares obj: lista){
-            if(obj.getUbicacion().toLowerCase().contains(newText.toLowerCase())){
-                miLista.add(obj);
-            }
-            AdapterLugar adapterLugar = new AdapterLugar(miLista);
-            rv.setAdapter(adapterLugar);
-        }
-    }
 
 }

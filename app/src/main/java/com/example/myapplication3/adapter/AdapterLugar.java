@@ -24,7 +24,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     @NonNull
     @Override
     public ViewHolderLugares onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_lugares, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_element, parent, false);
         ViewHolderLugares holder = new ViewHolderLugares(v);
         return holder;
     }
@@ -49,9 +49,9 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         public ViewHolderLugares(@NonNull View itemView) {
             super(itemView);
 
-            tv_nombre_lugar = itemView.findViewById(R.id.tv_nombre_lugarf);
-            tv_descripcion_lugar = itemView.findViewById(R.id.tv_descripcion_lugarf);
-            tv_ubicacion_lugar = itemView.findViewById(R.id.tv_ubicacion_lugarf);
+            tv_nombre_lugar = itemView.findViewById(R.id.name_textview);
+            tv_descripcion_lugar = itemView.findViewById(R.id.status_textview);
+            tv_ubicacion_lugar = itemView.findViewById(R.id.city_textview);
         }
     }
 }

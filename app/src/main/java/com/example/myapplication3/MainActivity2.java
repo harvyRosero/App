@@ -1,5 +1,6 @@
 package com.example.myapplication3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SearchView;
+
+import com.example.myapplication3.adapter.AdapterLugar;
+import com.example.myapplication3.pojo.Lugares;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +25,13 @@ import java.util.List;
 public class MainActivity2 extends AppCompatActivity  {
 
     ImageButton btn_fav, btn_perfil, btn_conf;
-    List<List_element> elements;
+
+    DatabaseReference ref;
+    ArrayList<Lugares> lista;
+    RecyclerView rv;
+    SearchView search_lugar;
+    AdapterLugar adapter;
+    LinearLayoutManager lm;
 
 
 
@@ -24,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        init();
+        //init();
 
         //funciones botones home
 
@@ -54,26 +70,61 @@ public class MainActivity2 extends AppCompatActivity  {
                 startActivity(i);
             }
         });
+
+
+        ref = FirebaseDatabase.getInstance().getReference().child("lugares");
+        rv = findViewById(R.id.recycler_view_lista_lugares);
+        search_lugar = findViewById(R.id.search_home);
+        lm = new LinearLayoutManager(this);
+
+        rv.setLayoutManager(lm);
+        lista = new ArrayList<>();
+        adapter = new AdapterLugar(lista);
+        rv.setAdapter(adapter);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                        Lugares lg = snapshot1.getValue(Lugares.class);
+                        lista.add(lg);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        search_lugar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                buscar(newText);
+                return true;
+            }
+        });
     }
 
-    public void init(){
-        elements = new ArrayList<>();
-        elements.add(new List_element( "Peñol", "Antioquia",
-                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
-        elements.add(new List_element("Caño Cristales", "Meta",
-                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
-        elements.add(new List_element("Catedral de zipaquira", "Zipaquira",
-                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
-        elements.add(new List_element( "Cerro Azul", "Guaviare",
-                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
-        elements.add(new List_element( "Puerto Nariño", "Amazonas",
-                "El Embalse Peñol-Guatapé, en ocasiones llamada Represa de Guatapé es un embalse colombiano localizado en el oriente de Antioquia de las Empresas Públicas de Medellín. "));
 
-        ListAdapter listAdapter = new ListAdapter(elements, this);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_lista_lugares);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapter);
+    private void buscar(String newText) {
+        ArrayList<Lugares> miLista = new ArrayList<>();
+        for(Lugares obj: lista){
+            if(obj.getUbicacion().toLowerCase().contains(newText.toLowerCase())){
+                miLista.add(obj);
+            }
+            AdapterLugar adapterLugar = new AdapterLugar(miLista);
+            rv.setAdapter(adapterLugar);
+        }
     }
 
 }

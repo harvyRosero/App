@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8EE98"
     android:orientation="vertical"
     tools:context=".RecuperarContr">
 
@@ -21,24 +22,24 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="30sp"
+        android:layout_marginTop="30sp"
         android:layout_marginRight="30sp"
         android:ems="10"
         android:hint="@string/txt_email"
-        android:layout_marginTop="30sp"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
-        android:textSize="20sp"
-        android:importantForAutofill="no" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
         android:layout_marginTop="20sp"
-        android:textSize="20sp"
+        android:layout_marginRight="30sp"
         android:backgroundTint="#19AFF3"
         android:text="@string/btn_enviar"
+        android:textSize="20sp"
         tools:targetApi="lollipop" />
 
     <Button
@@ -46,11 +47,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
         android:layout_marginTop="10sp"
-        android:textSize="20sp"
+        android:layout_marginRight="30sp"
         android:backgroundTint="#AEA5A5"
         android:text="@string/btn_atras"
+        android:textSize="20sp"
         tools:targetApi="lollipop" />
 
 </LinearLayout>

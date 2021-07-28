@@ -10,6 +10,7 @@
         android:id="@+id/linearLa_registro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F8EE98"
         android:orientation="vertical">
 
 
@@ -25,13 +26,13 @@
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginRight="30sp"
             android:layout_marginLeft="30sp"
-            android:inputType="textPersonName"
+            android:layout_marginRight="30sp"
+            android:ems="10"
             android:hint="@string/userName"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -43,9 +44,9 @@
             android:layout_marginBottom="20sp"
             android:ems="10"
             android:hint="@string/txt_email"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextPhone"
@@ -56,9 +57,9 @@
             android:layout_marginBottom="15sp"
             android:ems="10"
             android:hint="@string/txt_numero"
+            android:importantForAutofill="no"
             android:inputType="phone"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -69,9 +70,9 @@
             android:layout_marginBottom="15sp"
             android:ems="10"
             android:hint="@string/txt_password"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword3"
@@ -82,9 +83,9 @@
             android:layout_marginBottom="15sp"
             android:ems="10"
             android:hint="@string/txt_repetir_password"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
-            android:textSize="20sp"
-            android:importantForAutofill="no" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_registrarse_registro"

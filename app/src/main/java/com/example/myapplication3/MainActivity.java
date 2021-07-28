@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPass = findViewById(R.id.editTextPassword);
         btn = (Button)findViewById(R.id.btLogin);
         btLogin = findViewById(R.id.btLogin);
-        btLogin.setOnClickListener((View.OnClickListener) this);
+
         tvMensaje = findViewById(R.id.textMensaje);
 
 

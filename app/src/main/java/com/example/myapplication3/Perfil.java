@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 public class Perfil extends AppCompatActivity {
 
     ImageButton btn_home, btn_fav, btn_config;
+    SearchView searchlugar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,15 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Perfil.this, Configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        searchlugar = findViewById(R.id.search_perfil);
+        searchlugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Perfil.this, MainActivity2.class);
                 startActivity(i);
             }
         });

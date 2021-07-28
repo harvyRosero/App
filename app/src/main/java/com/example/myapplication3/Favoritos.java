@@ -27,6 +27,7 @@ import java.util.List;
 public class Favoritos extends AppCompatActivity  {
 
     ImageButton btn_home, btn_perfil, btn_config;
+    SearchView searchlugar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,18 @@ public class Favoritos extends AppCompatActivity  {
                 startActivity(i);
             }
         });
+
+        searchlugar = findViewById(R.id.searchView_fav);
+
+        searchlugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Favoritos.this, MainActivity2.class);
+                startActivity(i);
+
+            }
+        });
+
 
     }
 

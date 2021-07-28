@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8EE98"
+    android:background="@drawable/fondo1"
     android:contentDescription="@string/logo"
     tools:context=".Splash">
 
@@ -14,7 +14,7 @@
         android:layout_height="231dp"
         android:layout_marginTop="204dp"
         android:contentDescription="@string/logo"
-        android:src="@mipmap/logo_002"
+        android:src="@mipmap/logo_001"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"

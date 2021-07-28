@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8EE98"
+    android:background="@drawable/fondo3"
     tools:context=".MainActivity">
 
     <EditText
@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="#FFFFFF"
         android:ems="10"
         android:hint="Correo"
         android:inputType="textPersonName"
@@ -28,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="#FFFFFF"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPersonName"
@@ -60,7 +62,7 @@
         android:id="@+id/btn_registrarse"
         android:layout_width="134dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="148dp"
         android:background="#DD62646A"
         android:backgroundTint="#68B4F1"
         android:text="@string/btn_reg"
@@ -68,6 +70,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         tools:targetApi="lollipop" />
 
@@ -96,7 +99,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintVertical_bias="0.742" />
 
     <TextView
         android:id="@+id/textMensaje"

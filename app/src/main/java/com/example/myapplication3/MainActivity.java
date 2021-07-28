@@ -6,22 +6,47 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn, btn2, btn_recuperar_cont;
+    private EditText editTextUsuario;
+    private EditText editTextPass;
+    private TextView tvMensaje;
+    private Button btLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editTextUsuario = findViewById(R.id.editTextUsuario);
+        editTextPass = findViewById(R.id.editTextPassword);
+        btn = (Button)findViewById(R.id.btLogin);
+        btLogin = findViewById(R.id.btLogin);
+        btLogin.setOnClickListener((View.OnClickListener) this);
+        tvMensaje = findViewById(R.id.textMensaje);
 
-        btn = (Button)findViewById(R.id.btn_ingresar);
+
         btn.setOnClickListener(new View.OnClickListener() {
+            String usuario="prueba";
+            String password="123";
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(i);
+
+                switch (v.getId()){
+                  case R.id.btLogin:
+                        String user = editTextUsuario.getText().toString();
+                        String pass = editTextPass.getText().toString();
+                        if(usuario.equals(user) && password.equals(pass)){
+                            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                            startActivity(intent);
+                        }else{
+                            tvMensaje.setText("Usuario o contraseña no válidos");
+                        }
+                        break;
+               }
             }
         });
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "684167211554",
+    "firebase_url": "https://appturism-7b352-default-rtdb.firebaseio.com",
+    "project_id": "appturism-7b352",
+    "storage_bucket": "appturism-7b352.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684167211554:android:491adadbf5b82f1984f87b",
+        "android_client_info": {
+          "package_name": "com.example.myapplication3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684167211554-cms3ir8e6vaimguvmoqjhragkbg0od16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9T0ribn3wevppoX2RJlIctjSK2G-fM8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684167211554-cms3ir8e6vaimguvmoqjhragkbg0od16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

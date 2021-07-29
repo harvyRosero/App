@@ -81,37 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        /*
-        btn.setOnClickListener(new View.OnClickListener() {
-            String usuario="prueba";
-            String password="123";
-            @Override
-            public void onClick(View v) {
 
-                switch (v.getId()){
-                  case R.id.btLogin:
-                        final String user = editTextUsuario.getText().toString();
-                        final String pass = editTextPass.getText().toString();
-                        if(usuario.equals(user) && password.equals(pass)){
-                            saveLoginSharedPreferences(user);
-                            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                            startActivity(intent);
-                        }else{
-                            tvMensaje.setText("Usuario o contraseña Incorrecto");
-                        }
-                        break;
-               }
-            }
-        private void saveLoginSharedPreferences(String user){
-            SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("user", user);
-            editor.apply();
-        }
-
-        });
-
-         */
 
         btn2 = (Button)findViewById(R.id.btn_registrarse);
         btn2.setOnClickListener(new View.OnClickListener() {

@@ -50,6 +50,8 @@ public class Registro extends AppCompatActivity {
                 Intent i = new Intent(Registro.this, MainActivity.class);
                 startActivity(i);
             }
+
+
         });
 
         btn_registrarse = (Button)findViewById(R.id.btn_registrarse_registro);
@@ -124,4 +126,8 @@ public class Registro extends AppCompatActivity {
 
         }
     }
+
+
+
+
 }

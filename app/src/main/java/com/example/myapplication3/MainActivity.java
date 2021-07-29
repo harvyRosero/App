@@ -3,7 +3,9 @@ package com.example.myapplication3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -88,17 +90,25 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (v.getId()){
                   case R.id.btLogin:
-                        String user = editTextUsuario.getText().toString();
-                        String pass = editTextPass.getText().toString();
+                        final String user = editTextUsuario.getText().toString();
+                        final String pass = editTextPass.getText().toString();
                         if(usuario.equals(user) && password.equals(pass)){
+                            saveLoginSharedPreferences(user);
                             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                             startActivity(intent);
                         }else{
-                            tvMensaje.setText("Usuario o contraseña no válidos");
+                            tvMensaje.setText("Usuario o contraseña Incorrecto");
                         }
                         break;
                }
             }
+        private void saveLoginSharedPreferences(String user){
+            SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("user", user);
+            editor.apply();
+        }
+
         });
 
          */

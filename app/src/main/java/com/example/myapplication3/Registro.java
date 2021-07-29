@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuthException;
 public class Registro extends AppCompatActivity {
 
     Button btn_atras, btn_registrarse;
-    EditText et_gmail, et_password;
+    EditText et_gmail, et_password, et_r_password, et_usename, et_celular;
 
     FirebaseAuth firebaseAuth;
     AwesomeValidation awesomeValidation;
@@ -42,6 +42,9 @@ public class Registro extends AppCompatActivity {
 
         et_gmail = findViewById(R.id.et_gmail_registro);
         et_password = findViewById(R.id.et_contraseña_registro);
+        et_r_password = findViewById(R.id.et_r_password_registro);
+        et_usename = findViewById(R.id.et_user_registro);
+        et_celular = findViewById(R.id.et_telefono_registro);
 
         btn_atras = (Button)findViewById(R.id.btn_atras);
         btn_atras.setOnClickListener(new View.OnClickListener() {
@@ -60,12 +63,15 @@ public class Registro extends AppCompatActivity {
             public void onClick(View v) {
                 String mail = et_gmail.getText().toString();
                 String pass = et_password.getText().toString();
+                String rPass = et_r_password.getText().toString();
+                String user = et_usename.getText().toString();
+                String celular = et_celular.getText().toString();
 
                 if(awesomeValidation.validate()){
                     firebaseAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
+                            if(task.isSuccessful() ){
                                 Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_SHORT).show();
                                 finish();
                             }else{
@@ -121,7 +127,7 @@ public class Registro extends AppCompatActivity {
                 et_gmail.requestFocus();
                 break;
             default:
-                Toast.makeText(Registro.this, "Ocurrion un error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registro.this, "ERROR al registrarse", Toast.LENGTH_SHORT).show();
                 break;
 
         }

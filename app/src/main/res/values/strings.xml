@@ -23,4 +23,7 @@
     <string name="nueva_pass">Nueva contraseña</string>
     <string name="colombia">Colombia</string>
     <string name="activo">Activo</string>
+
+    <string name="invalid_gmail">Ingrese gmail valido</string>
+    <string name="invalid_password">Ingrese contraseña mayor a 6 digitos</string>
 </resources>

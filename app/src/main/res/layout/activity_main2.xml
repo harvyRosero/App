@@ -42,9 +42,10 @@
             android:layout_marginRight="5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#FFEB3B"
+            android:background="#44FF00"
+            android:elevation="6dp"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/home1" />
+            android:src="@mipmap/btn_home01" />
 
         <ImageButton
             android:id="@+id/btn_fav2"
@@ -55,9 +56,10 @@
             android:layout_marginRight="2.5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
+            android:elevation="6dp"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/fav1" />
+            android:src="@mipmap/btn_fav01" />
 
         <ImageButton
             android:id="@+id/btn_perfil2"
@@ -69,8 +71,9 @@
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
             android:background="#FFFFFF"
+            android:elevation="6dp"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/perfil1" />
+            android:src="@mipmap/btn_perfil01" />
 
         <ImageButton
             android:id="@+id/btn_conf2"
@@ -83,9 +86,10 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
+            android:elevation="6dp"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/cong1" />
+            android:src="@mipmap/btn_conf01" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

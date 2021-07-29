@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Configuracion extends AppCompatActivity {
 
     ImageButton btn_home, btn_fav, btn_perfil;
-    Button btn_to_rv;
+    Button btn_cerrar_sesion;
     SearchView searchlugar;
 
     @Override
@@ -20,12 +23,14 @@ public class Configuracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
 
-        btn_to_rv = (Button)findViewById(R.id.btn_to_recyclerview);
-        btn_to_rv.setOnClickListener(new View.OnClickListener() {
+        btn_cerrar_sesion = (Button)findViewById(R.id.btn_cerrar_sesion);
+        btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Configuracion.this, MainActivity.class );
-                startActivity(i);
+
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(Configuracion.this, "sesion cerrada!", Toast.LENGTH_SHORT).show();
+                irAlogin();
             }
         });
 
@@ -64,5 +69,11 @@ public class Configuracion extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void irAlogin() {
+        Intent i = new Intent(Configuracion.this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 }

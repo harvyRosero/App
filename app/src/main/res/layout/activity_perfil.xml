@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8EE98"
     tools:context=".Perfil">
 
     <LinearLayout
@@ -44,7 +43,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/home1" />
+            android:elevation="6dp"
+            android:src="@mipmap/btn_home01" />
 
         <ImageButton
             android:id="@+id/btn_fav2"
@@ -57,7 +57,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/fav1" />
+            android:elevation="6dp"
+            android:src="@mipmap/btn_fav01" />
 
         <ImageButton
             android:id="@+id/btn_perfil2"
@@ -68,9 +69,10 @@
             android:layout_marginTop="5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#FFEB3B"
+            android:background="#00FFCC"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/perfil1" />
+            android:elevation="6dp"
+            android:src="@mipmap/btn_perfil01" />
 
         <ImageButton
             android:id="@+id/btn_conf2"
@@ -85,7 +87,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/cong1" />
+            android:elevation="6dp"
+            android:src="@mipmap/btn_conf01" />
     </LinearLayout>
 
     <LinearLayout
@@ -122,7 +125,6 @@
         android:layout_height="491dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="240dp"
-        android:background="#F8EE98"
         android:orientation="vertical">
 
 

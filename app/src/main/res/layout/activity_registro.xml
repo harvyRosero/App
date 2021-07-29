@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo3"
     tools:context=".Registro">
 
     <LinearLayout
         android:id="@+id/linearLa_registro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F8EE98"
         android:orientation="vertical">
 
 
@@ -23,7 +23,7 @@
             app:srcCompat="@mipmap/logo_002" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/et_user_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -35,7 +35,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/et_gmail_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -49,7 +49,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/et_telefono_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -62,7 +62,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/et_contraseña_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -75,7 +75,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPassword3"
+            android:id="@+id/et_r_password_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"

@@ -43,7 +43,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/home1" />
+            android:src="@mipmap/btn_home01"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btn_fav2"
@@ -56,7 +57,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/fav1" />
+            android:src="@mipmap/btn_fav01"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btn_perfil2"
@@ -69,7 +71,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/perfil1" />
+            android:src="@mipmap/btn_perfil01"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btn_conf2"
@@ -82,13 +85,14 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#FFEB3B"
+            android:background="#00B0FF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/cong1" />
+            android:src="@mipmap/btn_conf01"
+            android:elevation="6dp"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_to_recyclerview"
+        android:id="@+id/btn_cerrar_sesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

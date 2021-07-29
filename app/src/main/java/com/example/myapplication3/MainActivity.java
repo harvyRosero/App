@@ -1,13 +1,25 @@
 package com.example.myapplication3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextPass;
     private TextView tvMensaje;
     private Button btLogin;
+
+    AwesomeValidation awesomeValidation;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +43,43 @@ public class MainActivity extends AppCompatActivity {
 
         tvMensaje = findViewById(R.id.textMensaje);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
 
+        if(mUser != null){
+            irAhome();
+        }
+
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        awesomeValidation.addValidation(this, R.id.et_gmail_registro, Patterns.EMAIL_ADDRESS, R.string.invalid_gmail);
+        awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(awesomeValidation.validate()){
+                    String mail = editTextUsuario.getText().toString();
+                    String pass = editTextPass.getText().toString();
+
+                    firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            //
+                            if(task.isSuccessful()){
+                                irAhome();
+                            }else{
+                                String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                                dameToasterror(errorCode);
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+        /*
         btn.setOnClickListener(new View.OnClickListener() {
             String usuario="prueba";
             String password="123";
@@ -50,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+         */
+
         btn2 = (Button)findViewById(R.id.btn_registrarse);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,5 +120,60 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
+
+    private void irAhome() {
+        Intent i = new Intent(MainActivity.this, MainActivity2.class);
+        i.putExtra("mail", editTextUsuario.getText().toString());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
+    private void dameToasterror(String error){
+        switch (error) {
+            case "ERROR_INVALID_CUSTOM_TOKEN":
+                Toast.makeText(MainActivity.this, "fomato de token incorrecto", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_CUSTOM_TOKEN_MISMATCH":
+                Toast.makeText(MainActivity.this, "token no corresponde", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_INVALID_ID_CREDENTIAL":
+                Toast.makeText(MainActivity.this, "credencial formato incorrecto", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_INVALID_EMAIL":
+                Toast.makeText(MainActivity.this, "formato correo incorrecto", Toast.LENGTH_SHORT).show();
+                editTextUsuario.setError("ERROR formato direccion de correo");
+                editTextUsuario.requestFocus();
+                break;
+            case "ERROR_WRONG_PASSWORD":
+                Toast.makeText(MainActivity.this, "contraseña no es valida", Toast.LENGTH_SHORT).show();
+                editTextPass.setError("la contraseña es incorrecta");
+                editTextPass.requestFocus();
+                editTextPass.setText("");
+                break;
+            case "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL":
+                Toast.makeText(MainActivity.this, "ya existe una cuenta con ese correo electronico", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_WEAK_PASSWORD":
+                Toast.makeText(MainActivity.this, "contraseña no es valida", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_USER_NOT_FOUND":
+                Toast.makeText(MainActivity.this, "no hay registro de este usuario", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_USER_DISABLED":
+                Toast.makeText(MainActivity.this, "su cuenta ha sido inhabilitada", Toast.LENGTH_SHORT).show();
+                break;
+            case "ERROR_EMAIL_ALREADY_IN_USE":
+                Toast.makeText(MainActivity.this, "la direccion de correo electronico ya esta siendo utilizada", Toast.LENGTH_SHORT).show();
+                editTextUsuario.setError("la direccion de correo electronico ya esta siendo utilizada por otra centa");
+                editTextUsuario.requestFocus();
+                break;
+            default:
+                Toast.makeText(MainActivity.this, "Ocurrion un error", Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+        }
 }

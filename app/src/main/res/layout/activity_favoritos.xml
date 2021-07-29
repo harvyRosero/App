@@ -44,7 +44,8 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/home1" />
+            android:src="@mipmap/btn_home01"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btn_fav2"
@@ -55,9 +56,10 @@
             android:layout_marginRight="2.5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#FFEB3B"
+            android:background="#FFE500"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/fav1" />
+            android:src="@mipmap/btn_fav01"
+            android:elevation="6dp"/>
 
         <ImageButton
             android:id="@+id/btn_perfil2"
@@ -70,7 +72,9 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/perfil1" />
+            android:src="@mipmap/btn_perfil01"
+            android:elevation="6dp"
+            />
 
         <ImageButton
             android:id="@+id/btn_conf2"
@@ -85,7 +89,9 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:contentDescription="@string/img_btn"
-            android:src="@mipmap/cong1" />
+            android:src="@mipmap/btn_conf01"
+            android:elevation="6dp"
+            />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

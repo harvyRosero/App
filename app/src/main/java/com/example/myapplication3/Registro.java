@@ -67,22 +67,34 @@ public class Registro extends AppCompatActivity {
                 String user = et_usename.getText().toString();
                 String celular = et_celular.getText().toString();
 
-                if(awesomeValidation.validate()){
-                    firebaseAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful() ){
-                                Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }else{
-                                String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
-                                dameToasterror(errorCode);
-                            }
+
+                
+                if(!user.isEmpty() && !celular.isEmpty() && !mail.isEmpty() && !pass.isEmpty() && !rPass.isEmpty()){
+                    if(pass.equals(rPass)){
+                        if(awesomeValidation.validate()){
+                            firebaseAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful() ){
+                                        Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }else{
+                                        String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                                        dameToasterror(errorCode);
+                                    }
+                                }
+                            });
                         }
-                    });
+
+                    }else{
+                        Toast.makeText(Registro.this, "La contraseña no coincide", Toast.LENGTH_LONG).show();
+                    }
+
+
                 }else{
-                    Toast.makeText(Registro.this, "completa los datos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro.this, "Debe llenar Todos los campos", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
     }

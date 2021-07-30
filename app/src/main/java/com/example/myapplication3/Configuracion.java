@@ -7,16 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class Configuracion extends AppCompatActivity {
 
     ImageButton btn_home, btn_fav, btn_perfil;
     Button btn_cerrar_sesion;
     SearchView searchlugar;
+    ImageView imageView;
+    private StorageReference storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,16 @@ public class Configuracion extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        storage = FirebaseStorage.getInstance().getReference();
+
+
+        imageView = (ImageView)findViewById(R.id.iv_mia);
+        Glide.with(this)
+                .load("https://gs://appturism-7b352.appspot.com/lugares/caño_cristales.jpg")
+                .into(imageView);
+
+
     }
 
     private void irAlogin() {

@@ -33,8 +33,6 @@ public class MainActivity2 extends AppCompatActivity  {
     AdapterLugar adapter;
     LinearLayoutManager lm;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

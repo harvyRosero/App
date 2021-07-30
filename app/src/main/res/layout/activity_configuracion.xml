@@ -104,4 +104,16 @@
         android:layout_marginTop="465dp"
         android:text="Cerrar sesion" />
 
+    <ImageView
+        android:id="@+id/iv_mia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="117dp"
+        android:layout_marginLeft="117dp"
+        android:layout_marginTop="174dp" />
+
 </RelativeLayout>

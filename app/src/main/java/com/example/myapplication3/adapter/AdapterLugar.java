@@ -1,18 +1,19 @@
 package com.example.myapplication3.adapter;
 
-import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication3.Detalles;
 import com.example.myapplication3.R;
 import com.example.myapplication3.pojo.Lugares;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
 
     List<Lugares> lugaList;
 
+
     public AdapterLugar(List<Lugares> lugaList) {
+
         this.lugaList = lugaList;
     }
 
@@ -34,18 +37,11 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
 
     @Override
     public void onBindViewHolder(@NonNull AdapterLugar.ViewHolderLugares holder, int position) {
-
         Lugares lg = lugaList.get(position);
         holder.tv_nombre_lugar.setText(lg.getNombre());
         holder.tv_descripcion_lugar.setText(lg.getDescripcion());
         holder.tv_ubicacion_lugar.setText(lg.getUbicacion());
 
-        holder.btn_detalle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(holder.itemView.getContext(), Detalles.class);
-            }
-        });
     }
 
     @Override
@@ -57,6 +53,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
 
         TextView tv_nombre_lugar, tv_descripcion_lugar,tv_ubicacion_lugar;
         ImageButton btn_detalle, btn_agregar;
+        ImageView iv_lugar;
         public ViewHolderLugares(@NonNull View itemView) {
             super(itemView);
 
@@ -64,7 +61,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             tv_descripcion_lugar = itemView.findViewById(R.id.status_textview);
             tv_ubicacion_lugar = itemView.findViewById(R.id.city_textview);
 
-            btn_detalle = itemView.findViewById(R.id.btn_home_agregar);
         }
     }
 }

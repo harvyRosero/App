@@ -5,14 +5,16 @@ public class Lugares {
     private String nombre;
     private String ubicacion;
     private String descripcion;
+    private String url_imagen;
 
     public Lugares() {
     }
 
-    public Lugares(String nombre, String ubicacion, String descripcion) {
+    public Lugares(String nombre, String ubicacion, String descripcion, String url_imagen ) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.descripcion = descripcion;
+        this.url_imagen = url_imagen;
     }
 
     public String getNombre() {
@@ -38,4 +40,8 @@ public class Lugares {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getUrl_imagen() { return url_imagen; }
+
+    public void setUrl_imagen(String url_imagen) { this.url_imagen = url_imagen; }
 }

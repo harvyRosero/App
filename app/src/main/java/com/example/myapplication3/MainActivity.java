@@ -2,6 +2,7 @@ package com.example.myapplication3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
 
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     String mail = editTextUsuario.getText().toString();
                     String pass = editTextPass.getText().toString();
 
-                    if (mail != null || pass != null) {
-                        return;
-                    }
-                    firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //
@@ -73,8 +73,12 @@ public class MainActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 irAhome();
                             }else{
+
+                                if (!TextUtils.isEmpty(mail) || !TextUtils.isEmpty(pass)) {
+
                                 String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
                                 dameToasterror(errorCode);
+                                }
                             }
                         }
                     });
@@ -114,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void dameToasterror(String error){
         switch (error) {
+
             case "ERROR_INVALID_CUSTOM_TOKEN":
                 Toast.makeText(MainActivity.this, "fomato de token incorrecto", Toast.LENGTH_SHORT).show();
                 break;

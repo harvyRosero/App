@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TravelApp</string>
-    <string name="btn_olvide_pass">Recordar</string>
+    <string name="btn_olvide_pass">OLvide mi contraseña</string>
     <string name="img_btn">img_botom</string>
     <string name="logo">img_logo</string>
     <string name="txt_email">Gmail</string>

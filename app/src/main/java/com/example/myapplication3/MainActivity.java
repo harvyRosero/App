@@ -1,11 +1,6 @@
 package com.example.myapplication3;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -13,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         if(mUser != null){
             irAhome();
         }
-
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(this, R.id.et_gmail_registro, Patterns.EMAIL_ADDRESS, R.string.invalid_gmail);
         awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
@@ -65,10 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     String mail = editTextUsuario.getText().toString();
                     String pass = editTextPass.getText().toString();
 
+                    if (mail != null || pass != null) {
+                        return;
+                    }
                     firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //
+
                             if(task.isSuccessful()){
                                 irAhome();
                             }else{

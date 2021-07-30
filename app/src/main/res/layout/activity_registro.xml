@@ -94,9 +94,11 @@
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:layout_marginBottom="15sp"
-            android:backgroundTint="#16F11F"
+            android:background="@drawable/bordes_redondos"
+            android:fontFamily="monospace"
             android:text="@string/btn_reg"
-            android:textSize="20sp"
+            android:textColor="#100F0F"
+            android:textSize="18sp"
             tools:targetApi="lollipop" />
 
         <Button
@@ -105,8 +107,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
-            android:backgroundTint="#979292"
+            android:background="@drawable/bordes_redondos"
+            android:fontFamily="monospace"
             android:text="@string/btn_atras"
+            android:textColor="#0B0A0A"
+            android:textSize="18sp"
             tools:targetApi="lollipop" />
 
 

@@ -1,20 +1,22 @@
 package com.example.myapplication3.pojo;
 
+import android.net.Uri;
+
 public class Lugares {
 
     private String nombre;
     private String ubicacion;
     private String descripcion;
-    private String url_imagen;
+    private String urlimagen;
 
     public Lugares() {
     }
 
-    public Lugares(String nombre, String ubicacion, String descripcion, String url_imagen ) {
+    public Lugares(String nombre, String ubicacion, String descripcion, String urlimagen ) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.descripcion = descripcion;
-        this.url_imagen = url_imagen;
+        this.urlimagen = urlimagen;
     }
 
     public String getNombre() {
@@ -41,7 +43,7 @@ public class Lugares {
         this.descripcion = descripcion;
     }
 
-    public String getUrl_imagen() { return url_imagen; }
+    public String getUrlimagen() { return urlimagen; }
 
-    public void setUrl_imagen(String url_imagen) { this.url_imagen = url_imagen; }
+    public void setUrlimagen(String urlimagen) { this.urlimagen = urlimagen; }
 }

@@ -13,11 +13,17 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.example.myapplication3.pojo.Usuarios;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Registro extends AppCompatActivity {
@@ -26,9 +32,13 @@ public class Registro extends AppCompatActivity {
     EditText et_gmail, et_password, et_r_password, et_usename, et_celular;
 
     FirebaseAuth firebaseAuth;
+    DatabaseReference mRootReference;
     AwesomeValidation awesomeValidation;
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
+    //enviara datos , validar firebase
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,15 +78,25 @@ public class Registro extends AppCompatActivity {
                 String celular = et_celular.getText().toString();
 
 
-                
                 if(!user.isEmpty() && !celular.isEmpty() && !mail.isEmpty() && !pass.isEmpty() && !rPass.isEmpty()){
+
                     if(pass.equals(rPass)){
                         if(awesomeValidation.validate()){
                             firebaseAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                                     if(task.isSuccessful() ){
-                                        Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_LONG).show();
+                                        //envio de datos a firebase realtime
+                                        Usuarios usuario = new Usuarios( user, mail, celular);
+                                        myRef = database.getReference().child("usuarios").push();
+                                        myRef.setValue(usuario);
+
+                                        Intent i = new Intent();
+                                        i.putExtra("mail", mail);
+                                        i.putExtra("user", user);
+                                        i.putExtra("numero", celular);
                                         finish();
                                     }else{
                                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();

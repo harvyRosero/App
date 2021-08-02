@@ -16,6 +16,9 @@ public class RecuperarContr extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_contr);
 
+
+        //funcion botones
+
         btn_atras = (Button)findViewById(R.id.btn_atras_recuperar_c);
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override

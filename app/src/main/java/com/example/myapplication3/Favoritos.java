@@ -34,6 +34,8 @@ public class Favoritos extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
 
+        //funcion botones
+
         btn_home = (ImageButton)findViewById(R.id.btn_home2);
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override

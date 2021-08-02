@@ -69,7 +69,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#00FFCC"
+            android:background="#00FF0A"
             android:contentDescription="@string/img_btn"
             android:elevation="6dp"
             android:src="@mipmap/btn_perfil01" />
@@ -109,7 +109,7 @@
             app:srcCompat="@mipmap/foto_perfil" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_nombre_perfil"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginTop="20sp"
@@ -129,7 +129,7 @@
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_gmail_perfil"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="30sp"
@@ -140,7 +140,7 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_celular_perfil"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="30sp"

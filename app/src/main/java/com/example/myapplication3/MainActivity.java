@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.et_gmail_registro, Patterns.EMAIL_ADDRESS, R.string.invalid_gmail);
         awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
 
-
+        //boton iniciar sesion
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //funcion botones cambio de activity
         btn2 = (Button)findViewById(R.id.btn_registrarse);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //funcion iniciar sesion
+
     private void irAhome() {
         Intent i = new Intent(MainActivity.this, MainActivity2.class);
         i.putExtra("mail", editTextUsuario.getText().toString());
@@ -114,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
+    //funcion mostar typo de error
     private void dameToasterror(String error){
         switch (error) {
             case "ERROR_INVALID_CUSTOM_TOKEN":

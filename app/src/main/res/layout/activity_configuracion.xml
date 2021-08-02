@@ -85,7 +85,7 @@
             android:layout_marginRight="10sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#00B0FF"
+            android:background="#44FF00"
             android:contentDescription="@string/img_btn"
             android:src="@mipmap/btn_conf01"
             android:elevation="6dp"/>

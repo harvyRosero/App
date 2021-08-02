@@ -38,9 +38,8 @@ public class MainActivity2 extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //init();
 
-        //funciones botones home
+        //funciones botones
 
         btn_fav = (ImageButton)findViewById(R.id.btn_fav2);
         btn_fav.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +68,8 @@ public class MainActivity2 extends AppCompatActivity  {
             }
         });
 
+
+        //traer datos de firebase
 
         ref = FirebaseDatabase.getInstance().getReference().child("lugares");
         rv = findViewById(R.id.recycler_view_lista_lugares);
@@ -99,6 +100,7 @@ public class MainActivity2 extends AppCompatActivity  {
             }
         });
 
+        // utilizar search view para buscar
         search_lugar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -114,6 +116,7 @@ public class MainActivity2 extends AppCompatActivity  {
     }
 
 
+    //funcion para search view
     private void buscar(String newText) {
         ArrayList<Lugares> miLista = new ArrayList<>();
         for(Lugares obj: lista){

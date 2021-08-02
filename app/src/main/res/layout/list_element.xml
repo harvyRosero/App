@@ -44,7 +44,16 @@
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+
+                <TextView
+                    android:id="@+id/url_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:textSize="1sp"
+                    android:visibility="invisible"
+                    />
 
 
                 <ImageView

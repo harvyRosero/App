@@ -30,6 +30,8 @@ public class Configuracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
 
+
+        //funcion botones
         btn_cerrar_sesion = (Button)findViewById(R.id.btn_cerrar_sesion);
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,17 +79,11 @@ public class Configuracion extends AppCompatActivity {
             }
         });
 
-        storage = FirebaseStorage.getInstance().getReference();
-
-
-        imageView = (ImageView)findViewById(R.id.iv_mia);
-        Glide.with(this)
-                .load("https://gs://appturism-7b352.appspot.com/lugares/caño_cristales.jpg")
-                .into(imageView);
 
 
     }
 
+    //funcion cerrar sesion
     private void irAlogin() {
         Intent i = new Intent(Configuracion.this, MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);

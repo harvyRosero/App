@@ -1,6 +1,8 @@
 package com.example.myapplication3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -47,9 +49,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
 
+
+        //para enviarlo al home si ya esta registrado
         if(mUser != null){
             irAhome();
         }
+
+        //libreria de autenticacion
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(this, R.id.et_gmail_registro, Patterns.EMAIL_ADDRESS, R.string.invalid_gmail);
         awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
@@ -69,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                                 //
 
                                 if(task.isSuccessful()){
+                                    SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor obj_edit = pref.edit();
+                                    obj_edit.putString("gmail", editTextUsuario.getText().toString());
+                                    obj_edit.commit();
                                     irAhome();
                                 }else{
                                     String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
@@ -111,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void irAhome() {
         Intent i = new Intent(MainActivity.this, MainActivity2.class);
-        i.putExtra("mail", editTextUsuario.getText().toString());
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }

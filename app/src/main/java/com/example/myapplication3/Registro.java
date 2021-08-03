@@ -88,16 +88,14 @@ public class Registro extends AppCompatActivity {
 
                                     if(task.isSuccessful() ){
                                         Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_LONG).show();
+
                                         //envio de datos a firebase realtime
                                         Usuarios usuario = new Usuarios( user, mail, celular);
                                         myRef = database.getReference().child("usuarios").push();
                                         myRef.setValue(usuario);
 
-                                        Intent i = new Intent();
-                                        i.putExtra("mail", mail);
-                                        i.putExtra("user", user);
-                                        i.putExtra("numero", celular);
-                                        finish();
+                                        Intent i = new Intent(Registro.this, MainActivity2.class);
+                                        startActivity(i);
                                     }else{
                                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
                                         dameToasterror(errorCode);

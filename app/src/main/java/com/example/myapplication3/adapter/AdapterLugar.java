@@ -12,13 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication3.Favoritos;
 import com.example.myapplication3.InfoLugar;
 import com.example.myapplication3.R;
+import com.example.myapplication3.pojo.AgregarFavoritos;
 import com.example.myapplication3.pojo.Lugares;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -33,7 +37,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     List<Lugares> lugaList;
 
     public AdapterLugar(List<Lugares> lugaList) {
-
         this.lugaList = lugaList;
     }
 
@@ -54,10 +57,14 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         holder.url_imagen.setText(lg.getUrlimagen());
         //holder.iv_lugar.setImageBitmap(returnBitMap(lg.getUrl_imagen()));
 
+
         holder.btn_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(holder.itemView.getContext(), Favoritos.class);
+                i.putExtra("titulo", lg.getNombre());
+                i.putExtra("descripcion", lg.getDescripcion());
+                i.putExtra("ubicacion", lg.getUbicacion());
                 holder.itemView.getContext().startActivity(i);
             }
         });
@@ -90,7 +97,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             }
         });
 
-        //clase para obtener la imagen de url
     }
 
     @Override
@@ -116,6 +122,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             btn_comment = itemView.findViewById(R.id.btn_home_comment);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
+
 
         }
 

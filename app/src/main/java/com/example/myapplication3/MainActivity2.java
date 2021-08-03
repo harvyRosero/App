@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.myapplication3.adapter.AdapterLugar;
 import com.example.myapplication3.pojo.Lugares;
@@ -37,7 +38,6 @@ public class MainActivity2 extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
 
         //funciones botones
 
@@ -67,7 +67,6 @@ public class MainActivity2 extends AppCompatActivity  {
                 startActivity(i);
             }
         });
-
 
         //traer datos de firebase
 
@@ -114,7 +113,6 @@ public class MainActivity2 extends AppCompatActivity  {
             }
         });
     }
-
 
     //funcion para search view
     private void buscar(String newText) {

@@ -115,6 +115,7 @@
             android:layout_marginTop="20sp"
             android:layout_weight="2"
             android:text="@string/user"
+            android:background="@drawable/bordes_redondos_edti"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -132,6 +133,7 @@
             android:id="@+id/tv_gmail_perfil"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:background="@drawable/bordes_redondos_edti"
             android:layout_marginLeft="30sp"
             android:layout_marginTop="10sp"
             android:layout_marginRight="30sp"
@@ -143,6 +145,7 @@
             android:id="@+id/tv_celular_perfil"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:background="@drawable/bordes_redondos_edti"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:layout_marginBottom="10sp"
@@ -158,6 +161,7 @@
             android:layout_marginBottom="10sp"
             android:ems="10"
             android:hint="@string/nueva_pass"
+            android:background="@drawable/bordes_redondos_edti"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp" />
@@ -171,15 +175,16 @@
             android:layout_marginBottom="10sp"
             android:ems="10"
             android:hint="@string/txt_repetir_password"
+            android:background="@drawable/bordes_redondos_edti"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30sp"
+            android:layout_marginLeft="120dp"
             android:layout_marginRight="30sp"
             android:backgroundTint="#2196F3"
             android:text="@string/btn_enviar"

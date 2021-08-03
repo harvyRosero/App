@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/btn_registrarse_registro"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
+        android:layout_width="181dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bordes_redondos"
         android:fontFamily="monospace"
@@ -39,8 +39,8 @@
 
     <Button
         android:id="@+id/btn_atras"
-        android:layout_width="244dp"
-        android:layout_height="wrap_content"
+        android:layout_width="183dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/bordes_redondos"
         android:fontFamily="monospace"

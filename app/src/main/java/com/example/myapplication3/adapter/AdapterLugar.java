@@ -3,6 +3,7 @@ package com.example.myapplication3.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     @Override
     public void onBindViewHolder(@NonNull AdapterLugar.ViewHolderLugares holder, int position) {
         Lugares lg = lugaList.get(position);
+        // holder.iv_lugar.setImageURI(Uri.parse(lg.getUrlimagen()));
         holder.tv_nombre_lugar.setText(lg.getNombre());
         holder.tv_descripcion_lugar.setText(lg.getDescripcion());
         holder.tv_ubicacion_lugar.setText(lg.getUbicacion());

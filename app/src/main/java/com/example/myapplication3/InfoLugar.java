@@ -43,14 +43,12 @@ public class InfoLugar extends AppCompatActivity {
         String urlImage = getIntent().getStringExtra("imagen");
 
         tv_titulo.setText(titulo);
-        tv_descripcion.setText(urlImage);
+        tv_descripcion.setText(descrip);
         tv_ubicacion.setText(ubicacion);
-
-        String url = "https://firebasestorage.googleapis.com/v0/b/appturism-7b352.appspot.com/o/lugares%2Flajas0.jpg?alt=media&token=8f7883e5-ee1b-49c2-a0e9-7f9b81ea91d0";
 
         imageView = findViewById(R.id.miImage);
         Picasso.get()
-                .load(url)
+                .load(urlImage)
                 .error(R.drawable.alogo)
                 .into(imageView);
     }

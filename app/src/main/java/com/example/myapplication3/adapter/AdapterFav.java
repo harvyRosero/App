@@ -3,6 +3,7 @@ package com.example.myapplication3.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication3.R;
 import com.example.myapplication3.pojo.AgregarFavoritos;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,8 +35,12 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
     public void onBindViewHolder(@NonNull AdapterFav.ViewholderFav holder, int position) {
         AgregarFavoritos af = lugarFavorito.get(position);
         holder.titulo_f.setText(af.getLugar_name());
-        holder.descripcion_f.setText(af.getLugar_descripcion());
         holder.ubicacion_f.setText(af.getLugar_ubicacion());
+
+        Picasso.get()
+                .load(af.getImagen())
+                .error(R.mipmap.lugar1_1)
+                .into(holder.iv_lugar_f);
 
     }
 
@@ -46,6 +52,7 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
     public class ViewholderFav extends RecyclerView.ViewHolder {
 
         TextView titulo_f, descripcion_f, ubicacion_f;
+        ImageView iv_lugar_f;
 
         public ViewholderFav(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +60,7 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
             titulo_f = itemView.findViewById(R.id.tv_nombre_lugarf);
             descripcion_f = itemView.findViewById(R.id.tv_descripcion_lugarf);
             ubicacion_f = itemView.findViewById(R.id.tv_ubicacion_lugarf);
+            iv_lugar_f = itemView.findViewById(R.id.iv_lugar_fav);
 
         }
 

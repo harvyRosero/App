@@ -3,6 +3,7 @@ package com.example.myapplication3.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +55,14 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         holder.tv_nombre_lugar.setText(lg.getNombre());
         holder.tv_descripcion_lugar.setText(lg.getDescripcion());
         holder.tv_ubicacion_lugar.setText(lg.getUbicacion());
-        holder.url_imagen.setText(lg.getUrlimagen());
-        //holder.iv_lugar.setImageBitmap(returnBitMap(lg.getUrl_imagen()));
+
+        Picasso.get()
+                .load(lg.getImagen())
+                .error(R.drawable.alogo)
+                .resize(600, 450)
+                .into(holder.iv_lugar);
+
+
 
 
         holder.btn_agregar.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +72,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("titulo", lg.getNombre());
                 i.putExtra("descripcion", lg.getDescripcion());
                 i.putExtra("ubicacion", lg.getUbicacion());
+                i.putExtra("imagen", lg.getImagen());
                 holder.itemView.getContext().startActivity(i);
             }
         });
@@ -76,7 +84,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("titulo", lg.getNombre());
                 i.putExtra("descripcion", lg.getDescripcion());
                 i.putExtra("ubicacion", lg.getUbicacion());
-                i.putExtra("imagen", lg.getUrlimagen());
+                i.putExtra("imagen", lg.getImagen());
                 holder.itemView.getContext().startActivity(i);
             }
         });

@@ -7,16 +7,16 @@ public class Lugares {
     private String nombre;
     private String ubicacion;
     private String descripcion;
-    private String urlimagen;
+    private String imagen;
 
     public Lugares() {
     }
 
-    public Lugares(String nombre, String ubicacion, String descripcion, String urlimagen ) {
+    public Lugares(String nombre, String ubicacion, String descripcion, String imagen ) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.descripcion = descripcion;
-        this.urlimagen = urlimagen;
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -43,7 +43,11 @@ public class Lugares {
         this.descripcion = descripcion;
     }
 
-    public String getUrlimagen() { return urlimagen; }
+    public String getImagen() {
+        return imagen;
+    }
 
-    public void setUrlimagen(String urlimagen) { this.urlimagen = urlimagen; }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

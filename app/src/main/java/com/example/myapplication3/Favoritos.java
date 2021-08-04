@@ -61,10 +61,11 @@ public class Favoritos extends AppCompatActivity  {
         String titulo = getIntent().getStringExtra("titulo");
         String descripcion = getIntent().getStringExtra("descripcion");
         String ubicacion = getIntent().getStringExtra("ubicacion");
+        String imagen = getIntent().getStringExtra("imagen");
 
         //enviar datos a firebase realtime lugares favoritos
 
-        AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail);
+        AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail, imagen);
         myRef = database.getReference().child("Lugares Favoritos").push();
         myRef.setValue(agregarFavoritos);
 

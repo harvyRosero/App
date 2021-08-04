@@ -87,6 +87,7 @@ public class MainActivity2 extends AppCompatActivity  {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         Lugares lg = snapshot1.getValue(Lugares.class);
                         lista.add(lg);
+                        int i;
                     }
                     adapter.notifyDataSetChanged();
                 }

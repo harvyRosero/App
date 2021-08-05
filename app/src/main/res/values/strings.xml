@@ -30,4 +30,7 @@
     <string name="indicador_ubicacion">Departamento :</string>
     <string name="indicador_recomendacio">Recomendaciones :</string>
     <string name="indicador_clima">Clima promedio :</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="btn_maps">Abrir ubicacion</string>
 </resources>

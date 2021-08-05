@@ -49,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
 
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
 
         //para enviarlo al home si ya esta registrado
-        if(mUser != null){
+        if(mUser != null && !gmail.isEmpty()){
             irAhome();
         }
 

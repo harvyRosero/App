@@ -70,7 +70,7 @@
             android:layout_marginTop="5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#00FF0A"
+            android:background="@color/micolor"
             android:contentDescription="@string/img_btn"
             android:elevation="6dp"
             android:src="@mipmap/btn_perfil01" />

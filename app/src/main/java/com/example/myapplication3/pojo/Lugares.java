@@ -10,12 +10,14 @@ public class Lugares {
     private String imagen;
     private String recomendaciones;
     private String clima;
+    private String longitud;
+    private String latitud;
 
     public Lugares() {
     }
 
     public Lugares(String nombre, String ubicacion, String descripcion, String imagen, String recomendaciones,
-                   String clima) {
+                   String clima, String logitud, String latitud ) {
 
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -23,6 +25,8 @@ public class Lugares {
         this.imagen = imagen;
         this.recomendaciones = recomendaciones;
         this.clima = clima;
+        this.longitud = logitud;
+        this.latitud = latitud;
     }
 
     public String getNombre() {
@@ -71,5 +75,21 @@ public class Lugares {
 
     public void setClima(String clima) {
         this.clima = clima;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
     }
 }

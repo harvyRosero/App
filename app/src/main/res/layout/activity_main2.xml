@@ -42,7 +42,7 @@
             android:layout_marginRight="5sp"
             android:layout_marginBottom="10sp"
             android:layout_weight="1"
-            android:background="#44FF00"
+            android:background="@color/micolor"
             android:elevation="6dp"
             android:contentDescription="@string/img_btn"
             android:src="@mipmap/btn_home01" />

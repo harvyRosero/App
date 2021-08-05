@@ -3,6 +3,7 @@ package com.example.myapplication3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,9 @@ public class Configuracion extends AppCompatActivity {
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //para limpiar el almacenamiento local
+                SharedPreferences.Editor editor = getSharedPreferences("datos", MODE_PRIVATE).edit();
+                editor.clear().apply();
 
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(Configuracion.this, "sesion cerrada!", Toast.LENGTH_SHORT).show();

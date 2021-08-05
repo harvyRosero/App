@@ -64,24 +64,16 @@ public class Favoritos extends AppCompatActivity  {
         String ubicacion = getIntent().getStringExtra("ubicacion");
         String imagen = getIntent().getStringExtra("imagen");
 
+        //ontener informacion de donde viene el click
         String estado = "true";
-        String estadoMain = getIntent().getStringExtra("estado");
-        String estadoPerfil = getIntent().getStringExtra("estadoP");
-        String estadoConfig = getIntent().getStringExtra("estadoC");
+        String estadoAdapter = getIntent().getStringExtra("estadoA");
 
-        if(estado.equals(estadoMain) || estado.equals(estadoPerfil) || estado.equals(estadoConfig)){
-            Toast.makeText(Favoritos.this, "...", Toast.LENGTH_SHORT).show();
-        }else{
+        if(estado.equals(estadoAdapter)){
             //enviar datos a firebase realtime lugares favoritos
             AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail, imagen);
             myRef = database.getReference().child("Lugares Favoritos").push();
             myRef.setValue(agregarFavoritos);
         }
-
-
-
-
-
 
         //funcion botones cambio de activity
 
@@ -142,10 +134,7 @@ public class Favoritos extends AppCompatActivity  {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         AgregarFavoritos af = snapshot1.getValue(AgregarFavoritos.class);
                         lista.add(af);
-                        String mail = af.getMail();
-                        if(gmail.equals(mail)){
-                            buscar(gmail);
-                        }
+                        buscar(gmail);
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -157,6 +146,7 @@ public class Favoritos extends AppCompatActivity  {
 
             }
         });
+
 
     }
     private void buscar(String newText) {

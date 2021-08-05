@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity {
                                 //
 
                                 if(task.isSuccessful()){
+
+                                    //para guardar datos de manera local
                                     SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor obj_edit = pref.edit();
-                                    obj_edit.putString("gmail", editTextUsuario.getText().toString());
+                                    obj_edit.putString("gmail", mail);
                                     obj_edit.commit();
                                     irAhome();
                                 }else{

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.myapplication3.adapter.AdapterFav;
 import com.example.myapplication3.adapter.AdapterLugar;
+import com.example.myapplication3.pojo.AgregarFavoritos;
 import com.example.myapplication3.pojo.Lugares;
 import com.example.myapplication3.pojo.Usuarios;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,6 @@ public class Perfil extends AppCompatActivity {
     SearchView searchlugar;
 
     ArrayList<Usuarios> lista;
-    String gmail;
 
     DatabaseReference ref;
 
@@ -45,6 +45,10 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
+        //obtener datos guardados locales
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
 
         //funcion botones de cambio de activity
 
@@ -91,11 +95,29 @@ public class Perfil extends AppCompatActivity {
 
         lista = new ArrayList<>();
         ref = FirebaseDatabase.getInstance().getReference().child("usuarios");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                        Usuarios user = snapshot1.getValue(Usuarios.class);
+                        //lista.add(user);
+                        String correo = user.getCorreo();
+                        if(correo.equals(gmail)){
+                            String nombre = user.getNombre();
+                            tv_nombre.setText(nombre);
+                            tv_gmail.setText(user.getCorreo());
+                            tv_celular.setText(user.getNumero());
+                        }
+                    }
+                }
+            }
 
-        //obtener datos del amcenamiento local
-        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        gmail = dato.getString("gmail", "");
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
 
     }
 

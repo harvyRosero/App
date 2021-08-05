@@ -74,6 +74,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(holder.itemView.getContext(), Favoritos.class);
+                i.putExtra("estadoA", "true");
+
                 i.putExtra("titulo", lg.getNombre());
                 i.putExtra("descripcion", lg.getDescripcion());
                 i.putExtra("ubicacion", lg.getUbicacion());

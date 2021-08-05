@@ -94,7 +94,7 @@ public class Registro extends AppCompatActivity {
                                         myRef = database.getReference().child("usuarios").push();
                                         myRef.setValue(usuario);
 
-                                        Intent i = new Intent(Registro.this, MainActivity2.class);
+                                        Intent i = new Intent(Registro.this, MainActivity.class);
                                         startActivity(i);
                                     }else{
                                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();

@@ -62,10 +62,14 @@ public class MainActivity2 extends AppCompatActivity  {
             }
         });
 
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
+
         btn_conf = (ImageButton)findViewById(R.id.btn_conf2);
         btn_conf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(MainActivity2.this, gmail, Toast.LENGTH_LONG).show();
                 Intent i = new Intent(MainActivity2.this, Configuracion.class);
                 startActivity(i);
             }

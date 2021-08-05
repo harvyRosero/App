@@ -1,10 +1,13 @@
 package com.example.myapplication3.adapter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +44,10 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         this.lugaList = lugaList;
     }
 
+    //para firebase realtime
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
+
     @NonNull
     @Override
     public ViewHolderLugares onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
@@ -60,11 +67,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         Picasso.get()
                 .load(lg.getImagen())
                 .error(R.drawable.alogo)
-                .resize(600, 450)
+                .resize(600, 400)
                 .into(holder.iv_lugar);
-
-
-
 
         holder.btn_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("ubicacion", lg.getUbicacion());
                 i.putExtra("imagen", lg.getImagen());
                 holder.itemView.getContext().startActivity(i);
+
             }
         });
 
@@ -86,6 +91,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("descripcion", lg.getDescripcion());
                 i.putExtra("ubicacion", lg.getUbicacion());
                 i.putExtra("imagen", lg.getImagen());
+                i.putExtra("recomendaciones", lg.getRecomendaciones());
+                i.putExtra("clima", lg.getClima());
                 holder.itemView.getContext().startActivity(i);
             }
         });
@@ -95,7 +102,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         holder.btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "diste like", Toast.LENGTH_SHORT).show();
+                Toast.makeText(holder.itemView.getContext(), "like", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -118,53 +125,24 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         TextView tv_nombre_lugar, tv_descripcion_lugar,tv_ubicacion_lugar, url_imagen;
         ImageButton btn_agregar, btn_like, btn_comment;
         ImageView iv_lugar;
+        Context ctx;
+
+
+
         public ViewHolderLugares(@NonNull View itemView) {
             super(itemView);
 
             tv_nombre_lugar = itemView.findViewById(R.id.name_textview);
             tv_descripcion_lugar = itemView.findViewById(R.id.status_textview);
             tv_ubicacion_lugar = itemView.findViewById(R.id.city_textview);
-            url_imagen = itemView.findViewById(R.id.url_image);
 
             btn_agregar = itemView.findViewById(R.id.btn_home_agregar);
             btn_like = itemView.findViewById(R.id.btn_home_like);
             btn_comment = itemView.findViewById(R.id.btn_home_comment);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
-
-
         }
 
-    }
-
-
-    Bitmap bitmap;
-    public Bitmap returnBitMap(final String url){
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                URL imageurl = null;
-
-                try {
-                    imageurl = new URL(url);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    HttpURLConnection conn = (HttpURLConnection)imageurl.openConnection();
-                    conn.setDoInput(true);
-                    conn.connect();
-                    InputStream is = conn.getInputStream();
-                    bitmap = BitmapFactory.decodeStream(is);
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-        return bitmap;
     }
 
 }

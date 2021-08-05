@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -46,6 +48,7 @@ public class MainActivity2 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity2.this, Favoritos.class);
+                i.putExtra("estado", "true");
                 startActivity(i);
             }
         });
@@ -87,7 +90,6 @@ public class MainActivity2 extends AppCompatActivity  {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         Lugares lg = snapshot1.getValue(Lugares.class);
                         lista.add(lg);
-                        int i;
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -125,6 +127,7 @@ public class MainActivity2 extends AppCompatActivity  {
             AdapterLugar adapterLugar = new AdapterLugar(miLista);
             rv.setAdapter(adapterLugar);
         }
+
     }
 
 }

@@ -57,6 +57,7 @@ public class Configuracion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Configuracion.this, Favoritos.class);
+                i.putExtra("estadoC", "true");
                 startActivity(i);
             }
         });

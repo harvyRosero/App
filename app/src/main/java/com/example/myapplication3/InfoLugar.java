@@ -19,11 +19,10 @@ import java.io.InputStream;
 
 public class InfoLugar extends AppCompatActivity {
 
-    private TextView tv_titulo;
+    private TextView tv_titulo, tv_clima, tv_recomendaciones;
     private TextView tv_descripcion;
     private TextView tv_ubicacion;
     private ImageView imageView;
-    private Button btn_subir;
 
 
     @Override
@@ -36,59 +35,29 @@ public class InfoLugar extends AppCompatActivity {
         tv_titulo = findViewById(R.id.tv_titulo_info);
         tv_descripcion = findViewById(R.id.tv_descripcion_info);
         tv_ubicacion = findViewById(R.id.tv_ubicacion_info);
+        tv_recomendaciones = findViewById(R.id.tv_recomendaciones_info);
+        tv_clima = findViewById(R.id.tv_clima_info);
 
         String titulo = getIntent().getStringExtra("titulo");
         String descrip = getIntent().getStringExtra("descripcion");
         String ubicacion = getIntent().getStringExtra("ubicacion");
         String urlImage = getIntent().getStringExtra("imagen");
+        String recomendaciones = getIntent().getStringExtra("recomendaciones");
+        String clima = getIntent().getStringExtra("clima");
 
         tv_titulo.setText(titulo);
         tv_descripcion.setText(descrip);
         tv_ubicacion.setText(ubicacion);
+        //tv_recomendaciones.setText(recomendaciones);
+        tv_clima.setText(clima);
 
         imageView = findViewById(R.id.miImage);
         Picasso.get()
                 .load(urlImage)
                 .error(R.drawable.alogo)
+                .resize(700, 500)
                 .into(imageView);
     }
 
-    /*
 
-    public class getImageURL extends AsyncTask<String, Void, Bitmap> {
-
-        ImageView imgV;
-
-        public getImageURL(ImageView imgV){
-            this.imgV = imgV;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... url) {
-
-            String urlDisplay = url[0];
-            bitmap =  null;
-            try{
-                InputStream str = new java.net.URL(urlDisplay).openStream();
-                bitmap = BitmapFactory.decodeStream(str);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return bitmap;
-        }
-
-
-
-        @Override
-        protected void onPostExecute (Bitmap bitmap){
-            super.onPostExecute(bitmap);
-
-            imgV.setImageBitmap(bitmap);
-        }
-
-
-    }
-
-     */
 }

@@ -47,20 +47,12 @@
                     android:textStyle="bold"
                     android:gravity="center_horizontal" />
 
-                <TextView
-                    android:id="@+id/url_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="1sp"
-                    android:textSize="1sp"
-                    android:visibility="invisible"
-                    />
-
-
                 <ImageView
                     android:id="@+id/iv_image_lugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:elevation="30sp"
                     android:contentDescription="@string/img_btn"
                     android:src="@mipmap/lugar1" />
 
@@ -71,9 +63,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/items"
                     android:textAlignment="center"
-
                     android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
 
                 <TextView
                     android:id="@+id/city_textview"
@@ -99,24 +91,30 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/like" />
+                        android:src="@mipmap/like"
+                        tools:targetApi="lollipop" />
 
                     <ImageButton
                         android:id="@+id/btn_home_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/coment" />
+                        android:src="@mipmap/coment"
+                        tools:targetApi="lollipop" />
 
                     <ImageButton
                         android:id="@+id/btn_home_agregar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/agregar" />
+                        android:src="@mipmap/agregar"
+                        tools:targetApi="lollipop" />
 
 
                 </LinearLayout>

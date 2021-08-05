@@ -58,16 +58,29 @@ public class Favoritos extends AppCompatActivity  {
         gmail = dato.getString("gmail", "");
 
         //obtener datos del AdapterLugar
+
         String titulo = getIntent().getStringExtra("titulo");
         String descripcion = getIntent().getStringExtra("descripcion");
         String ubicacion = getIntent().getStringExtra("ubicacion");
         String imagen = getIntent().getStringExtra("imagen");
 
-        //enviar datos a firebase realtime lugares favoritos
+        String estado = "true";
+        String estadoMain = getIntent().getStringExtra("estado");
+        String estadoPerfil = getIntent().getStringExtra("estadoP");
+        String estadoConfig = getIntent().getStringExtra("estadoC");
 
-        AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail, imagen);
-        myRef = database.getReference().child("Lugares Favoritos").push();
-        myRef.setValue(agregarFavoritos);
+        if(estado.equals(estadoMain) || estado.equals(estadoPerfil) || estado.equals(estadoConfig)){
+            Toast.makeText(Favoritos.this, "...", Toast.LENGTH_SHORT).show();
+        }else{
+            //enviar datos a firebase realtime lugares favoritos
+            AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail, imagen);
+            myRef = database.getReference().child("Lugares Favoritos").push();
+            myRef.setValue(agregarFavoritos);
+        }
+
+
+
+
 
 
         //funcion botones cambio de activity
@@ -129,6 +142,10 @@ public class Favoritos extends AppCompatActivity  {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
                         AgregarFavoritos af = snapshot1.getValue(AgregarFavoritos.class);
                         lista.add(af);
+                        String mail = af.getMail();
+                        if(gmail.equals(mail)){
+                            buscar(gmail);
+                        }
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -140,5 +157,16 @@ public class Favoritos extends AppCompatActivity  {
 
             }
         });
+
+    }
+    private void buscar(String newText) {
+        ArrayList<AgregarFavoritos> miLista = new ArrayList<>();
+        for(AgregarFavoritos obj: lista){
+            if(obj.getMail().toLowerCase().contains(newText.toLowerCase())){
+                miLista.add(obj);
+            }
+            AdapterFav adapterfav = new AdapterFav(miLista);
+            rv.setAdapter(adapterfav);
+        }
     }
 }

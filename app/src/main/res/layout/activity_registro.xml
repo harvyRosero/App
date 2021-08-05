@@ -65,6 +65,7 @@
         android:ems="10"
         android:hint="@string/userName"
         android:importantForAutofill="no"
+        android:textColor="@color/black"
         android:inputType="textPersonName"
         android:textColorHint="@color/cardview_dark_background"
         android:textSize="20sp"

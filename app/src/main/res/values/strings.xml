@@ -26,4 +26,8 @@
 
     <string name="invalid_gmail">Ingrese gmail valido</string>
     <string name="invalid_password">Ingrese contraseña mayor a 6 digitos</string>
+
+    <string name="indicador_ubicacion">Departamento :</string>
+    <string name="indicador_recomendacio">Recomendaciones :</string>
+    <string name="indicador_clima">Clima promedio :</string>
 </resources>

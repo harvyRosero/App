@@ -12,50 +12,124 @@
         android:id="@+id/tv_titulo_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="30dp"
         android:gravity="center_horizontal"
+        android:hint="@string/app_name"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:layout_marginRight="30dp"
-        android:hint="Titulo"
-        android:layout_marginLeft="30dp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/miImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="30sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="3dp"
+        android:contentDescription="@string/bievenida_app"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30dp" />
 
     <TextView
         android:id="@+id/tv_descripcion_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:hint="decripcion"
+        android:layout_marginRight="30dp"
+        android:gravity="center_horizontal"
+        android:hint="@string/colombia"
         android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/tv_ubicacion_info"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:textSize="20sp"
-        android:hint="ubicacion"
-        android:textAlignment="center" />
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_subir"
-        android:text="subir"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_ubicacion_Indicador_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/indicador_ubicacion"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_ubicacion_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/colombia"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_clima_Indicador_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/indicador_clima"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_clima_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/colombia"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_recomendaciones_Indicador_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/indicador_recomendacio"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_recomendaciones_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/colombia"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

@@ -2,20 +2,29 @@ package com.example.myapplication3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.myapplication3.adapter.AdapterFav;
+import com.example.myapplication3.adapter.AdapterLugar;
 import com.example.myapplication3.pojo.Lugares;
+import com.example.myapplication3.pojo.Usuarios;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Perfil extends AppCompatActivity {
 
@@ -23,14 +32,19 @@ public class Perfil extends AppCompatActivity {
     ImageButton btn_home, btn_fav, btn_config;
     SearchView searchlugar;
 
+    ArrayList<Usuarios> lista;
+    String gmail;
+
     DatabaseReference ref;
+
+    //para firebase realtime
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-
-        String mail = getIntent().getStringExtra("mail");
 
         //funcion botones de cambio de activity
 
@@ -48,6 +62,7 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Perfil.this, Favoritos.class);
+                i.putExtra("estadoP", "true");
                 startActivity(i);
             }
         });
@@ -71,27 +86,18 @@ public class Perfil extends AppCompatActivity {
         });
 
         tv_nombre = (TextView)findViewById(R.id.tv_nombre_perfil);
+        tv_celular = (TextView)findViewById(R.id.tv_celular_perfil);
+        tv_gmail = (TextView)findViewById(R.id.tv_gmail_perfil);
 
+        lista = new ArrayList<>();
         ref = FirebaseDatabase.getInstance().getReference().child("usuarios");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                        Lugares lg = snapshot1.getValue(Lugares.class);
 
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        //obtener datos del amcenamiento local
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        gmail = dato.getString("gmail", "");
 
 
     }
+
 
 }

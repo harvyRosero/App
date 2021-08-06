@@ -79,6 +79,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("imagen", lg.getImagen());
                 i.putExtra("latitud", lg.getLatitud());
                 i.putExtra("longitud", lg.getLongitud());
+                i.putExtra("clima", lg.getClima());
                 holder.itemView.getContext().startActivity(i);
 
             }

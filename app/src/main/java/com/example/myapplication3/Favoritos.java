@@ -33,7 +33,6 @@ import java.util.List;
 public class Favoritos extends AppCompatActivity  {
 
     ImageButton btn_home, btn_perfil, btn_config;
-    SearchView searchlugar;
     String gmail;
 
     //para traer datos a recycler view
@@ -63,14 +62,20 @@ public class Favoritos extends AppCompatActivity  {
         String descripcion = getIntent().getStringExtra("descripcion");
         String ubicacion = getIntent().getStringExtra("ubicacion");
         String imagen = getIntent().getStringExtra("imagen");
+        String longitud = getIntent().getStringExtra("longitud");
+        String latitud = getIntent().getStringExtra("latitud");
+        String clima = getIntent().getStringExtra("clima");
 
         //ontener informacion de donde viene el click
         String estado = "true";
         String estadoAdapter = getIntent().getStringExtra("estadoA");
 
+
+        //enviar datos al firebase
         if(estado.equals(estadoAdapter)){
             //enviar datos a firebase realtime lugares favoritos
-            AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion, gmail, imagen);
+            AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion,
+                    gmail, imagen, longitud, latitud, clima);
             myRef = database.getReference().child("Lugares Favoritos").push();
             myRef.setValue(agregarFavoritos);
         }
@@ -104,22 +109,10 @@ public class Favoritos extends AppCompatActivity  {
             }
         });
 
-        searchlugar = findViewById(R.id.searchView_fav);
-
-        searchlugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Favoritos.this, MainActivity2.class);
-                startActivity(i);
-
-            }
-        });
-
         //traer datos de firebase
 
         ref = FirebaseDatabase.getInstance().getReference().child("Lugares Favoritos");
         rv = findViewById(R.id.recyclerfav);
-        search_lugar = findViewById(R.id.searchView_fav);
         lm = new LinearLayoutManager(this);
 
         rv.setLayoutManager(lm);

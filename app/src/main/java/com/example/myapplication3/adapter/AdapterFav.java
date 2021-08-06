@@ -53,14 +53,29 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
                 .resize(400, 300)
                 .into(holder.iv_lugar_f);
 
+
+        String titulo = af.getLugar_name();
+        String descripcion = af.getLugar_descripcion();
+        String ubicacion = af.getLugar_ubicacion();
+        String imagen = af.getImagen();
+        String latitud = af.getLatitud();
+        String longitud = af.getLongitud();
+        String clima = af.getClima();
+
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(holder.itemView.getContext(), InfoLugar.class);
+                i.putExtra("titulo", titulo);
+                i.putExtra("descripcion", descripcion);
+                i.putExtra("ubicacion", ubicacion);
+                i.putExtra("imagen", imagen);
+                i.putExtra("longitud", longitud);
+                i.putExtra("latitud", latitud);
+                i.putExtra("clima", clima);
                 holder.itemView.getContext().startActivity(i);
             }
         });
-
     }
 
     @Override

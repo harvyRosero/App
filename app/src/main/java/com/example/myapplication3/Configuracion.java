@@ -22,8 +22,6 @@ public class Configuracion extends AppCompatActivity {
 
     ImageButton btn_home, btn_fav, btn_perfil;
     Button btn_cerrar_sesion;
-    SearchView searchlugar;
-    ImageView imageView;
     private StorageReference storage;
 
     @Override
@@ -74,16 +72,6 @@ public class Configuracion extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        searchlugar =  findViewById(R.id.search_config);
-        searchlugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Configuracion.this, MainActivity2.class);
-                startActivity(i);
-            }
-        });
-
 
 
     }

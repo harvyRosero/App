@@ -61,6 +61,7 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
         String latitud = af.getLatitud();
         String longitud = af.getLongitud();
         String clima = af.getClima();
+        String recomendaciones = af.getRecomendaciones();
 
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +74,9 @@ public class AdapterFav  extends RecyclerView.Adapter<AdapterFav.ViewholderFav> 
                 i.putExtra("longitud", longitud);
                 i.putExtra("latitud", latitud);
                 i.putExtra("clima", clima);
+                i.putExtra("recomendaciones", recomendaciones);
                 holder.itemView.getContext().startActivity(i);
+
             }
         });
     }

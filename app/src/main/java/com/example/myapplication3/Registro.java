@@ -35,6 +35,7 @@ public class Registro extends AppCompatActivity {
     DatabaseReference mRootReference;
     AwesomeValidation awesomeValidation;
 
+    //para enviar datos a firebase
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 

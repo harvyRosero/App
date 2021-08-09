@@ -10,6 +10,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -20,12 +25,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.myapplication3.adapter.AdapterFav;
 import com.example.myapplication3.adapter.AdapterLugar;
 import com.example.myapplication3.pojo.AgregarFavoritos;
 import com.example.myapplication3.pojo.Lugares;
+import com.example.myapplication3.pojo.UserImage;
 import com.example.myapplication3.pojo.Usuarios;
+import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +44,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.ArrayList;
 
@@ -47,7 +57,7 @@ public class Perfil extends AppCompatActivity {
 
     DatabaseReference ref;
 
-    //para firebase realtime
+    //para enviar datos a firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
@@ -55,7 +65,6 @@ public class Perfil extends AppCompatActivity {
     private StorageReference myStorage;
     private static final int GALERY_INTENT = 1;
     private ProgressDialog mProgressDialog;
-
 
 
     @Override
@@ -101,7 +110,7 @@ public class Perfil extends AppCompatActivity {
         tv_celular = (TextView)findViewById(R.id.tv_celular_perfil);
         tv_gmail = (TextView)findViewById(R.id.tv_gmail_perfil);
 
-        lista = new ArrayList<>();
+        //traer los datos del usuario
         ref = FirebaseDatabase.getInstance().getReference().child("usuarios");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,52 +136,81 @@ public class Perfil extends AppCompatActivity {
             }
         });
 
+        //enviar y obtener imagen de perfil
         myStorage = FirebaseStorage.getInstance().getReference();
         uploadImage = (ImageView)findViewById(R.id.uploadImageVp);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_PICK);
-                i.setType("image/*");
-                startActivityForResult(i, GALERY_INTENT);
+                Intent i = new Intent(Perfil.this, FotoPerfil.class);
+                startActivity(i);
             }
         });
 
-        mProgressDialog = new ProgressDialog(this);
+
+        //traer imagen de usuario
+
+        ref = FirebaseDatabase.getInstance().getReference().child("foto perfil");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                        UserImage imagen = snapshot1.getValue(UserImage.class);
+                        String correo = imagen.getCorreo();
+                        if(correo.equals(gmail)){
+                            String urlImagen = imagen.getImagePerfil();
+                            Picasso.get()
+                                    .load(urlImagen)
+                                    .resize(300, 300)
+                                    .transform(new CircleTransform())
+                                    .into(uploadImage);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public static class CircleTransform implements Transformation {
+        @Override
+        public Bitmap transform(Bitmap source) {
+            int size = Math.min(source.getWidth(), source.getHeight());
 
-        if(requestCode == GALERY_INTENT && resultCode == RESULT_OK){
+            int x = (source.getWidth() - size) / 2;
+            int y = (source.getHeight() - size) / 2;
 
-            mProgressDialog.setTitle("subiendo...");
-            mProgressDialog.setMessage("subiendo foto...");
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.show();
+            Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
+            if (squaredBitmap != source) {
+                source.recycle();
+            }
 
-            Uri uri = data.getData();
+            Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
 
-            StorageReference filePath = myStorage.child("foto_perfil").child(uri.getLastPathSegment());
-            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    mProgressDialog.dismiss();
+            Canvas canvas = new Canvas(bitmap);
+            Paint paint = new Paint();
+            BitmapShader shader = new BitmapShader(squaredBitmap,
+                    Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            paint.setShader(shader);
+            paint.setAntiAlias(true);
 
-                    Uri descargarFoto = taskSnapshot.getUploadSessionUri();
-                    String image = taskSnapshot.getUploadSessionUri().toString();
+            float r = size / 2f;
+            canvas.drawCircle(r, r, r, paint);
 
-                    Picasso.get()
-                            .load(image)
-                            .resize(100, 100)
-                            .error(R.mipmap.lugar1_1)
-                            .into(uploadImage);
+            squaredBitmap.recycle();
+            return bitmap;
+        }
 
-                    Toast.makeText(Perfil.this, image, Toast.LENGTH_LONG).show();
-                }
-            });
+        @Override
+        public String key() {
+            return "circle";
         }
     }
+
 }

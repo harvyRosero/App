@@ -20,6 +20,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication3.Comentarios;
 import com.example.myapplication3.Favoritos;
 import com.example.myapplication3.InfoLugar;
 import com.example.myapplication3.R;
@@ -37,7 +38,6 @@ import java.net.URL;
 import java.util.List;
 
 public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLugares> {
-
     List<Lugares> lugaList;
 
     public AdapterLugar(List<Lugares> lugaList) {
@@ -80,6 +80,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 i.putExtra("latitud", lg.getLatitud());
                 i.putExtra("longitud", lg.getLongitud());
                 i.putExtra("clima", lg.getClima());
+                i.putExtra("descripcion", lg.getDescripcion());
+                i.putExtra("recomendaciones", lg.getRecomendaciones());
                 holder.itemView.getContext().startActivity(i);
 
             }
@@ -113,7 +115,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         holder.btn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "comentarios", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(holder.itemView.getContext(), Comentarios.class);
+                holder.itemView.getContext().startActivity(i);
             }
         });
 

@@ -65,17 +65,19 @@ public class Favoritos extends AppCompatActivity  {
         String longitud = getIntent().getStringExtra("longitud");
         String latitud = getIntent().getStringExtra("latitud");
         String clima = getIntent().getStringExtra("clima");
+        String recomendaciones = getIntent().getStringExtra("recomendaciones");
 
         //ontener informacion de donde viene el click
         String estado = "true";
         String estadoAdapter = getIntent().getStringExtra("estadoA");
 
 
-        //enviar datos al firebase
+        //enviar datos al firebase realtime lugares favoritos
         if(estado.equals(estadoAdapter)){
-            //enviar datos a firebase realtime lugares favoritos
+
             AgregarFavoritos agregarFavoritos = new AgregarFavoritos(titulo, descripcion, ubicacion,
-                    gmail, imagen, longitud, latitud, clima);
+                    gmail, imagen, longitud, latitud, clima, recomendaciones);
+
             myRef = database.getReference().child("Lugares Favoritos").push();
             myRef.setValue(agregarFavoritos);
         }

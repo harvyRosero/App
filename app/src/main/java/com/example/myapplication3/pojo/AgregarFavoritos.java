@@ -12,12 +12,15 @@ public class AgregarFavoritos {
     String longitud;
     String latitud;
     String clima;
+    String recomendaciones;
 
     public AgregarFavoritos() {
     }
 
     public AgregarFavoritos(String lugar_name, String lugar_descripcion, String lugar_ubicacion,
-                            String mail, String imagen, String longitud, String latitud, String clima) {
+                            String mail, String imagen, String longitud, String latitud,
+                            String clima, String recomendaciones) {
+
         this.lugar_name = lugar_name;
         this.lugar_descripcion = lugar_descripcion;
         this.lugar_ubicacion = lugar_ubicacion;
@@ -26,6 +29,7 @@ public class AgregarFavoritos {
         this.longitud = longitud;
         this.latitud = latitud;
         this.clima = clima;
+        this.recomendaciones = recomendaciones;
     }
 
     public String getLugar_name() {
@@ -91,4 +95,14 @@ public class AgregarFavoritos {
     public void setClima(String clima) {
         this.clima = clima;
     }
+
+    public String getRecomendaciones() {
+        return recomendaciones;
+    }
+
+    public void setRecomendaciones(String recomendaciones) {
+        this.recomendaciones = recomendaciones;
+    }
+
+
 }

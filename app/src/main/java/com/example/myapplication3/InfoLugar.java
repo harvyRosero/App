@@ -42,7 +42,7 @@ public class InfoLugar extends AppCompatActivity {
         btn_maps = findViewById(R.id.btn_ir_a_maps);
 
         String titulo = getIntent().getStringExtra("titulo");
-        String descrip = getIntent().getStringExtra("descripcion");
+        String descripcion = getIntent().getStringExtra("descripcion");
         String ubicacion = getIntent().getStringExtra("ubicacion");
         String urlImage = getIntent().getStringExtra("imagen");
         String recomendaciones = getIntent().getStringExtra("recomendaciones");
@@ -51,9 +51,9 @@ public class InfoLugar extends AppCompatActivity {
         String longitud = getIntent().getStringExtra("longitud");
 
         tv_titulo.setText(titulo);
-        tv_descripcion.setText(descrip);
+        tv_descripcion.setText(descripcion);
         tv_ubicacion.setText(ubicacion);
-        //tv_recomendaciones.setText(recomendaciones);
+        tv_recomendaciones.setText(recomendaciones);
         tv_clima.setText(clima);
 
         imageView = findViewById(R.id.miImage);

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication3.pojo.UserImage;
+import com.example.myapplication3.pojo.Usuarios;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +56,9 @@ public class FotoPerfil extends AppCompatActivity {
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String gmail = dato.getString("gmail", "");
 
+
+
+        //abrir galeria celular
         myStorage = FirebaseStorage.getInstance().getReference();
         uploadImage = (ImageView)findViewById(R.id.upload_image_foto_perfil);
         btn_elegir_img = findViewById(R.id.btn_elegir_img);
@@ -85,6 +89,7 @@ public class FotoPerfil extends AppCompatActivity {
                                     .load(urlImagen)
                                     .resize(200, 200)
                                     .transform(new Perfil.CircleTransform())
+                                    .error(R.mipmap.foto_perfil)
                                     .into(uploadImage);
                         }
                     }
@@ -98,7 +103,7 @@ public class FotoPerfil extends AppCompatActivity {
         });
     }
 
-    //enviar imagen
+    //descargar url de storage firebase
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -121,25 +126,48 @@ public class FotoPerfil extends AppCompatActivity {
                     SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
                     String gmail = dato.getString("gmail", "");
 
-                    //traer url de imagen
+                    // url de imagen
                     Task<Uri> result = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                     result.addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            String imagen = uri.toString();
 
-                            //enviar imagen  firebase realtime
-                            UserImage foto = new UserImage( imagen, gmail);
-                            myRef = database.getReference().child("foto perfil").push();
-                            myRef.setValue(foto);
+                            //traer los datos del usuario
+                            ref = FirebaseDatabase.getInstance().getReference().child("usuarios");
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                                            Usuarios user = snapshot1.getValue(Usuarios.class);
+                                            //lista.add(user);
+                                            String correo = user.getCorreo();
+                                            if(correo.equals(gmail)){
+                                                String nombre = user.getNombre();
+                                                String imagen = uri.toString();
+
+                                                //enviar imagen  firebase realtime imagen usuario
+                                                UserImage foto = new UserImage( imagen, gmail, nombre);
+                                                myRef = database.getReference().child("foto perfil").push();
+                                                myRef.setValue(foto);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
 
                             btn_enviar_img = findViewById(R.id.btn_enviar_img);
                             btn_enviar_img.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent i = new Intent(FotoPerfil.this, Perfil.class);
-                                    i.putExtra("imagenP", imagen);
-                                    i.putExtra("estado", "true");
                                     startActivity(i);
                                 }
                             });

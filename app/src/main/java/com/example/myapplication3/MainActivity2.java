@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.myapplication3.adapter.AdapterLugar;
 import com.example.myapplication3.pojo.Lugares;
+import com.example.myapplication3.pojo.Usuarios;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +42,10 @@ public class MainActivity2 extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        //obtener datos guardados locales
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
+
         //funciones botones
 
         btn_fav = (ImageButton)findViewById(R.id.btn_fav2);
@@ -62,8 +67,6 @@ public class MainActivity2 extends AppCompatActivity  {
             }
         });
 
-        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        String gmail = dato.getString("gmail", "");
 
         btn_conf = (ImageButton)findViewById(R.id.btn_conf2);
         btn_conf.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +122,7 @@ public class MainActivity2 extends AppCompatActivity  {
                 return true;
             }
         });
+
     }
 
     //funcion para search view

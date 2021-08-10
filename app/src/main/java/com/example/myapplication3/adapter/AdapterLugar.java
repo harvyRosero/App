@@ -116,6 +116,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(holder.itemView.getContext(), Comentarios.class);
+                i.putExtra("lugar", lg.getNombre());
                 holder.itemView.getContext().startActivity(i);
             }
         });

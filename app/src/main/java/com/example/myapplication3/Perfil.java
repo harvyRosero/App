@@ -125,6 +125,7 @@ public class Perfil extends AppCompatActivity {
                             tv_nombre.setText(nombre);
                             tv_gmail.setText(user.getCorreo());
                             tv_celular.setText(user.getNumero());
+
                         }
                     }
                 }
@@ -136,8 +137,8 @@ public class Perfil extends AppCompatActivity {
             }
         });
 
-        //enviar y obtener imagen de perfil
-        myStorage = FirebaseStorage.getInstance().getReference();
+
+        //ir a foto perfil
         uploadImage = (ImageView)findViewById(R.id.uploadImageVp);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,6 +165,7 @@ public class Perfil extends AppCompatActivity {
                                     .load(urlImagen)
                                     .resize(300, 300)
                                     .transform(new CircleTransform())
+                                    .error(R.mipmap.foto_perfil)
                                     .into(uploadImage);
                         }
                     }
@@ -178,6 +180,7 @@ public class Perfil extends AppCompatActivity {
 
     }
 
+    //tranformar imageview en circulo
     public static class CircleTransform implements Transformation {
         @Override
         public Bitmap transform(Bitmap source) {

@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.example.myapplication3.pojo.UserComentarios;
+import com.example.myapplication3.pojo.UserImage;
 import com.example.myapplication3.pojo.Usuarios;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -94,6 +96,10 @@ public class Registro extends AppCompatActivity {
                                         Usuarios usuario = new Usuarios( user, mail, celular);
                                         myRef = database.getReference().child("usuarios").push();
                                         myRef.setValue(usuario);
+
+                                        UserImage userImage = new UserImage("...",mail, user);
+                                        myRef = database.getReference().child("foto perfil").push();
+                                        myRef.setValue(userImage);
 
                                         Intent i = new Intent(Registro.this, MainActivity.class);
                                         startActivity(i);

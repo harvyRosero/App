@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffff79"
+    android:background="#4FADDC68"
     tools:context=".Perfil">
 
 
@@ -229,7 +229,7 @@
                     android:background="@drawable/bordes_redondos"
                     android:fontFamily="monospace"
                     android:text="@string/btn_enviar"
-                    android:textColor="#F8F2F2"
+                    android:textColor="#202b13"
                     android:textSize="18sp"
                     tools:targetApi="lollipop" />
             </LinearLayout>

@@ -21,15 +21,15 @@
         <RelativeLayout
             android:id="@+id/rl_cardview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
 
             android:padding="6dp">
 
             <LinearLayout
                 android:id="@+id/linear_l_contendor_cont"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="354dp"
+                android:layout_height="432dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="4dp"
@@ -47,15 +47,15 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+
                 <ImageView
                     android:id="@+id/iv_image_lugar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:contentDescription="@string/img_btn"
                     android:elevation="30sp"
                     android:src="@mipmap/lugar1" />
-
 
                 <TextView
                     android:id="@+id/status_textview"
@@ -92,35 +92,36 @@
                     <ImageButton
                         android:id="@+id/btn_home_like"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
                         android:contentDescription="@string/img_btn"
                         android:src="@mipmap/like"
-                        tools:targetApi="lollipop" />
-
-                    <ImageButton
-                        android:id="@+id/btn_home_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
-                        android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/coment"
                         tools:targetApi="lollipop" />
 
                     <ImageButton
                         android:id="@+id/btn_home_agregar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
                         android:contentDescription="@string/img_btn"
                         android:src="@mipmap/agregar"
                         tools:targetApi="lollipop" />
 
+                    <ImageButton
+                        android:id="@+id/btn_home_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
+                        android:contentDescription="@string/img_btn"
+                        android:src="@mipmap/coment"
+                        tools:targetApi="lollipop" />
+
 
                 </LinearLayout>
+
             </LinearLayout>
 
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -12,18 +13,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.example.myapplication3.pojo.UserImage;
+import com.example.myapplication3.pojo.Usuarios;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
     Button btn, btn2, btn_recuperar_cont;
     private EditText editTextUsuario;
@@ -32,20 +49,51 @@ public class MainActivity extends AppCompatActivity {
     private Button btLogin;
 
     AwesomeValidation awesomeValidation;
-    FirebaseAuth firebaseAuth;
+
+    //------------------
+    private SignInButton signInButton;
+    private GoogleSignInClient mGoogleSignInClient;
+    private String TAG = "Google";
+    private FirebaseAuth mAuth;
+    private int RC_SIGN_IN = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        signInButton = findViewById(R.id.sign_in_button1);
+        mAuth = FirebaseAuth.getInstance();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            irAhome();
+        }
+
+        //---------------
+
         editTextUsuario = findViewById(R.id.editTextUsuario);
         editTextPass = findViewById(R.id.editTextPassword);
         btn = (Button)findViewById(R.id.btLogin);
         btLogin = findViewById(R.id.btLogin);
 
-        tvMensaje = findViewById(R.id.textMensaje);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
 
@@ -53,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
         String gmail = dato.getString("gmail", "");
 
         //para enviarlo al home si ya esta registrado
+
         if(mUser != null && !gmail.isEmpty()){
             irAhome();
         }
+
 
         //libreria de autenticacion
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
@@ -63,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.et_contraseña_registro, ".{6,}", R.string.invalid_password);
 
         //boton iniciar sesion
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!mail.isEmpty() && !pass.isEmpty()){
                     if(awesomeValidation.validate()){
-                        firebaseAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 //
@@ -98,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         //funcion botones cambio de activity
         btn2 = (Button)findViewById(R.id.btn_registrarse);
@@ -176,4 +229,83 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+
+        //--------------------------------------------------
+
+
+    private void signIn(){
+        Intent i = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(i, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSigInResult(task);
+        }
+
+    }
+
+    private void handleSigInResult(Task<GoogleSignInAccount> completeTask){
+        try{
+            GoogleSignInAccount acc = completeTask.getResult(ApiException.class);
+            Toast.makeText(MainActivity.this, "Cargando informacion...", Toast.LENGTH_LONG).show();
+            FirebaseGoogleAuth(acc);
+
+        }catch (ApiException e){
+            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_LONG).show();
+            FirebaseGoogleAuth(null);
+        }
+
+    }
+
+    private void FirebaseGoogleAuth(GoogleSignInAccount acct){
+        AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "...", Toast.LENGTH_LONG).show();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    updateUI(user);
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Error2", Toast.LENGTH_LONG).show();
+                    updateUI(null);
+                }
+            }
+        });
+    }
+
+    private void updateUI(FirebaseUser fUser){
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        if(account != null){
+            String personName = account.getDisplayName();
+            String email = account.getEmail();
+            String id = account.getId();
+            //String n = account.getIdToken();
+            String image = account.getPhotoUrl().toString();
+
+            Usuarios usuario = new Usuarios( personName, email, id);
+            myRef = database.getReference().child("usuarios").push();
+            myRef.setValue(usuario);
+
+            UserImage userImage = new UserImage(image, email, personName);
+            myRef = database.getReference().child("foto perfil").push();
+            myRef.setValue(userImage);
+
+            //para guardar datos de manera local
+            SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            SharedPreferences.Editor obj_edit = pref.edit();
+            obj_edit.putString("gmail", email);
+            obj_edit.commit();
+
+            Intent i = new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(i);
+        }
+    }
+
 }

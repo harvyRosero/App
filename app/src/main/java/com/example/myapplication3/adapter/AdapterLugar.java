@@ -25,9 +25,14 @@ import com.example.myapplication3.Favoritos;
 import com.example.myapplication3.InfoLugar;
 import com.example.myapplication3.R;
 import com.example.myapplication3.pojo.AgregarFavoritos;
+import com.example.myapplication3.pojo.EstadoBotones;
 import com.example.myapplication3.pojo.Lugares;
+import com.example.myapplication3.pojo.Usuarios;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -47,6 +52,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     //para firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference myRef2 = database.getReference();
+    DatabaseReference ref;
 
     @NonNull
     @Override
@@ -103,15 +110,44 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             }
         });
 
+
+
         //funcion botones
 
+        //obtener datos guardados locales sharetpreferences
+        SharedPreferences dato =  holder.itemView.getContext().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
+
+
+        /*
         holder.btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "like", Toast.LENGTH_SHORT).show();
+                //myRef = database.getReference().child("like lugares").child(lg.getNombre());
+                //myRef.setValue(1);
+
+                myRef = database.getReference().child("estado boton").push();
+                EstadoBotones estado = new EstadoBotones(gmail, "ok", lg.getNombre());
+                myRef.setValue(estado);
+
+                holder.btn_like.setVisibility(View.GONE);
+                holder.btn_dislike.setVisibility(View.VISIBLE);
+
             }
         });
 
+
+
+        holder.btn_dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.btn_like.setVisibility(View.VISIBLE);
+                holder.btn_dislike.setVisibility(View.GONE);
+
+            }
+        });
+ */
         holder.btn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,10 +167,9 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     public static class ViewHolderLugares extends RecyclerView.ViewHolder {
 
         TextView tv_nombre_lugar, tv_descripcion_lugar,tv_ubicacion_lugar, url_imagen;
-        ImageButton btn_agregar, btn_like, btn_comment;
+        ImageButton btn_agregar, btn_like, btn_comment, btn_dislike;
         ImageView iv_lugar;
         Context ctx;
-
 
 
         public ViewHolderLugares(@NonNull View itemView) {
@@ -147,8 +182,10 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             btn_agregar = itemView.findViewById(R.id.btn_home_agregar);
             btn_like = itemView.findViewById(R.id.btn_home_like);
             btn_comment = itemView.findViewById(R.id.btn_home_comment);
+            //btn_dislike = itemView.findViewById(R.id.btn_home_dislike);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
+
         }
 
     }

@@ -34,7 +34,6 @@ public class Registro extends AppCompatActivity {
     EditText et_gmail, et_password, et_r_password, et_usename, et_celular;
 
     FirebaseAuth firebaseAuth;
-    DatabaseReference mRootReference;
     AwesomeValidation awesomeValidation;
 
     //para enviar datos a firebase

@@ -24,7 +24,7 @@
             android:fontFamily="cursive"
             android:gravity="center"
             android:text="@string/bievenida_app"
-            android:textColor="#7C7006"
+            android:textColor="#750711"
             android:textSize="48sp"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
+            android:layout_marginTop="70sp"
             android:gravity="center_horizontal"
             android:text="@string/nombre_app"
             android:textColor="#750711"

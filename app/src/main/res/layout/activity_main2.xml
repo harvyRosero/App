@@ -10,79 +10,75 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/az">
+        android:background="#cce845"
+        android:orientation="horizontal">
 
         <SearchView
             android:id="@+id/search_home"
             android:layout_width="match_parent"
             android:layout_height="40sp"
-            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="20sp"
             android:layout_marginTop="10sp"
             android:layout_marginRight="20sp"
-            android:layout_marginLeft="20sp"
+            android:layout_marginBottom="10sp"
             android:background="@color/white" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="84dp"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="55dp"
-        android:orientation="horizontal"
+        android:background="#cce845"
         android:gravity="center_horizontal"
-        android:background="@color/az"
-        android:layout_alignParentLeft="true">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_home2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/home03"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15sp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/circuloverde"
             android:elevation="40dp"
-            android:background="@drawable/circulo"
-            />
+            android:src="@mipmap/home03" />
 
         <ImageButton
             android:id="@+id/btn_fav2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/fav03"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/fav03" />
 
         <ImageButton
             android:id="@+id/btn_perfil2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
-            android:src="@mipmap/perfill03"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/perfill03" />
 
         <ImageButton
             android:id="@+id/btn_conf2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:src="@mipmap/config03"
             android:layout_marginLeft="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/config03" />
 
 
     </LinearLayout>
@@ -90,17 +86,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_lista_lugares"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="595dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="137dp"
         android:layout_marginBottom="0dp"
-        android:background="#D1D6D8">
+        android:background="#4FADDC68">
 
 
     </androidx.recyclerview.widget.RecyclerView>

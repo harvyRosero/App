@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4FADDC68"
     tools:context=".Perfil">
 
 
@@ -11,62 +12,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:orientation="horizontal"
+        android:background="#cce845"
         android:gravity="center_horizontal"
-        android:background="@color/az"
-        android:layout_alignParentLeft="true">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_home2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/home03"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15sp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/home03" />
 
         <ImageButton
             android:id="@+id/btn_fav2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/fav03"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/fav03" />
 
         <ImageButton
             android:id="@+id/btn_perfil2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10sp"
-            android:src="@mipmap/perfill03"
-            android:background="@drawable/circulo"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/circuloverde"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/perfill03" />
 
         <ImageButton
             android:id="@+id/btn_conf2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:src="@mipmap/config03"
             android:layout_marginLeft="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/circulo_blaco"
             android:elevation="40dp"
-            />
+            android:src="@mipmap/config03" />
 
 
     </LinearLayout>
@@ -79,9 +76,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:gravity="center_vertical"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/linear_latout_perfil_img"
@@ -104,9 +100,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25sp"
+                    android:layout_marginBottom="15sp"
                     android:layout_weight="1"
                     android:text="@string/user"
-                    android:layout_marginBottom="15sp"
                     android:textSize="24sp" />
 
             </LinearLayout>
@@ -194,13 +190,13 @@
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50sp"
+                    android:layout_marginLeft="60sp"
                     android:layout_marginTop="15sp"
                     android:layout_marginRight="50sp"
                     android:background="@drawable/bordes_redondos"
                     android:fontFamily="monospace"
                     android:text="@string/btn_enviar"
-                    android:textColor="#F8F2F2"
+                    android:textColor="#202b13"
                     android:textSize="18sp"
                     tools:targetApi="lollipop" />
             </LinearLayout>
@@ -208,7 +204,6 @@
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>

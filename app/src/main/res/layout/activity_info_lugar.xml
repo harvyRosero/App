@@ -126,8 +126,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/indicador_recomendacio"
                         android:textSize="17sp"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_recomendaciones_info"
@@ -144,8 +143,10 @@
                     android:layout_marginLeft="80sp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="80sp"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/verde_oscuro"
+                    android:fontFamily="monospace"
                     android:text="@string/btn_maps"
+                    android:textColor="@color/white"
                     tools:targetApi="lollipop" />
 
             </LinearLayout>

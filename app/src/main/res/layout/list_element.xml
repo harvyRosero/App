@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical"
         android:layout_marginLeft="15sp"
-        android:layout_marginRight="15sp">
+        android:layout_marginRight="15sp"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl_cardview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
 
             android:padding="6dp">
 
             <LinearLayout
                 android:id="@+id/linear_l_contendor_cont"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="354dp"
+                android:layout_height="432dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="4dp"
@@ -41,35 +40,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/app_name"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:gravity="center_horizontal" />
+                    android:textStyle="bold" />
+
 
                 <ImageView
                     android:id="@+id/iv_image_lugar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="240dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:elevation="30sp"
                     android:contentDescription="@string/img_btn"
+                    android:elevation="30sp"
                     android:src="@mipmap/lugar1" />
-
 
                 <TextView
                     android:id="@+id/status_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10sp"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginRight="10sp"
+                    android:gravity="center_horizontal"
                     android:text="@string/items"
                     android:textAlignment="center"
                     android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10sp" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/city_textview"
@@ -77,8 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45sp"
                     android:layout_marginLeft="45sp"
-                    android:layout_marginRight="20sp"
                     android:layout_marginTop="2dp"
+                    android:layout_marginRight="20sp"
                     android:fontFamily="casual"
                     android:gravity="end"
                     android:text="@string/colombia"
@@ -93,43 +92,41 @@
                     <ImageButton
                         android:id="@+id/btn_home_like"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
                         android:contentDescription="@string/img_btn"
                         android:src="@mipmap/like"
-                        tools:targetApi="lollipop" />
-
-                    <ImageButton
-                        android:id="@+id/btn_home_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
-                        android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/coment"
                         tools:targetApi="lollipop" />
 
                     <ImageButton
                         android:id="@+id/btn_home_agregar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
                         android:contentDescription="@string/img_btn"
                         android:src="@mipmap/agregar"
                         tools:targetApi="lollipop" />
 
+                    <ImageButton
+                        android:id="@+id/btn_home_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/verde_oscuro"
+                        android:contentDescription="@string/img_btn"
+                        android:src="@mipmap/coment"
+                        tools:targetApi="lollipop" />
+
 
                 </LinearLayout>
+
             </LinearLayout>
-
-
 
 
         </RelativeLayout>
     </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

@@ -117,29 +117,29 @@
 
         <Button
             android:id="@+id/btn_registrarse_registro"
-            android:layout_width="match_parent"
+            android:layout_width="184dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bordes_redondos"
             android:fontFamily="monospace"
             android:text="@string/btn_reg"
             android:textColor="#100F0F"
             android:textSize="18sp"
-            android:layout_marginRight="40sp"
-            android:layout_marginLeft="40sp"
             tools:ignore="MissingConstraints"
             tools:targetApi="lollipop" />
 
         <Button
             android:id="@+id/btn_atras"
-            android:layout_width="match_parent"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp"
             android:background="@drawable/bordes_redondos"
             android:fontFamily="monospace"
             android:text="@string/btn_atras"
             android:textColor="#0B0A0A"
-            android:layout_marginLeft="40sp"
-            android:layout_marginRight="40sp"
             android:textSize="18sp"
             tools:ignore="MissingConstraints"
             tools:targetApi="lollipop" />

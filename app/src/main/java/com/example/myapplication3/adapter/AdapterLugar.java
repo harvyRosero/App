@@ -52,7 +52,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     //para firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-    DatabaseReference myRef2 = database.getReference();
     DatabaseReference ref;
 
     @NonNull
@@ -73,7 +72,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         Picasso.get()
                 .load(lg.getImagen())
                 .error(R.drawable.alogo)
-                .resize(600, 400)
+                .resize(700, 600)
                 .into(holder.iv_lugar);
 
         holder.btn_agregar.setOnClickListener(new View.OnClickListener() {
@@ -110,44 +109,53 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             }
         });
 
-
-
-        //funcion botones
-
         //obtener datos guardados locales sharetpreferences
         SharedPreferences dato =  holder.itemView.getContext().getSharedPreferences("datos", Context.MODE_PRIVATE);
         String gmail = dato.getString("gmail", "");
 
+        //traer los datos del usuario
+        ref = FirebaseDatabase.getInstance().getReference().child("estado boton");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                        EstadoBotones estadoBotones = snapshot1.getValue(EstadoBotones.class);
+                        String correo = estadoBotones.getCorreo();
+                        String lugar = estadoBotones.getNombre_lugar();
+                        if(correo.equals(gmail)){
+                            if(lugar.equals(lg.getNombre())){
+                                int i = 24123;
+                                holder.btn_like.setBackgroundColor(i);
 
-        /*
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        //funcion botones
+
         holder.btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //myRef = database.getReference().child("like lugares").child(lg.getNombre());
-                //myRef.setValue(1);
-
-                myRef = database.getReference().child("estado boton").push();
-                EstadoBotones estado = new EstadoBotones(gmail, "ok", lg.getNombre());
-                myRef.setValue(estado);
-
-                holder.btn_like.setVisibility(View.GONE);
-                holder.btn_dislike.setVisibility(View.VISIBLE);
-
+                Intent i = new Intent(holder.itemView.getContext(), InfoLugar.class);
+                i.putExtra("estadoAdap", "true");
+                i.putExtra("lugarAdap",lg.getNombre());
+                holder.itemView.getContext().startActivity(i);
             }
         });
 
 
 
-        holder.btn_dislike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                holder.btn_like.setVisibility(View.VISIBLE);
-                holder.btn_dislike.setVisibility(View.GONE);
-
-            }
-        });
- */
         holder.btn_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +190,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             btn_agregar = itemView.findViewById(R.id.btn_home_agregar);
             btn_like = itemView.findViewById(R.id.btn_home_like);
             btn_comment = itemView.findViewById(R.id.btn_home_comment);
-            //btn_dislike = itemView.findViewById(R.id.btn_home_dislike);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
 

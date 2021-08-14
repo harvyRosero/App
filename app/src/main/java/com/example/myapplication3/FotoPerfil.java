@@ -28,9 +28,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class FotoPerfil extends AppCompatActivity {
 
     DatabaseReference ref;
@@ -61,7 +58,7 @@ public class FotoPerfil extends AppCompatActivity {
         //abrir galeria celular
         myStorage = FirebaseStorage.getInstance().getReference();
         uploadImage = (ImageView)findViewById(R.id.upload_image_foto_perfil);
-        btn_elegir_img = findViewById(R.id.btn_elegir_img);
+        btn_elegir_img = findViewById(R.id.btn_elegir_image);
         btn_elegir_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,15 +159,6 @@ public class FotoPerfil extends AppCompatActivity {
                             });
 
 
-
-                            btn_enviar_img = findViewById(R.id.btn_enviar_img);
-                            btn_enviar_img.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent i = new Intent(FotoPerfil.this, Perfil.class);
-                                    startActivity(i);
-                                }
-                            });
 
                         }
                     });

@@ -18,6 +18,7 @@ import android.graphics.Shader;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -50,21 +51,16 @@ import java.util.ArrayList;
 
 public class Perfil extends AppCompatActivity {
 
-    TextView tv_nombre, tv_gmail, tv_celular;
-    ImageButton btn_home, btn_fav, btn_config;
-
-    ArrayList<Usuarios> lista;
-
-    DatabaseReference ref;
+    private TextView tv_nombre, tv_gmail, tv_celular;
+    private ImageButton btn_home, btn_fav, btn_config;
+    private Button btn_avtualizar_info;
+    private ImageView uploadImage;
 
     //para enviar datos a firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference ref;
 
-    private ImageView uploadImage;
-    private StorageReference myStorage;
-    private static final int GALERY_INTENT = 1;
-    private ProgressDialog mProgressDialog;
 
 
     @Override
@@ -175,6 +171,17 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        //boton actulizar informacion
+
+        btn_avtualizar_info = findViewById(R.id.btn_actualizar_info_perfil);
+        btn_avtualizar_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Perfil.this, FotoPerfil.class);
+                startActivity(i);
             }
         });
 

@@ -24,6 +24,13 @@
     <string name="colombia">Colombia</string>
     <string name="activo">Activo</string>
     <string name="cerrar_sesion">Cerrar sesion</string>
+    <string name="actualizar_info">Actualizar informacion</string>
+    <string name="galeria">Elegir Imagen</string>
+    <string name="cambiar_foto">Cambiar Imagen de Perfil</string>
+    <string name="nombre_de_user">Nombre de usuario</string>
+    <string name="informacion_user">Actualizar informacion</string>
+    <string name="NUMERO">Numero de telefono</string>
+    <string name="Nacionalidad">Nacionalidad</string>
 
     <string name="invalid_gmail">Ingrese gmail valido</string>
     <string name="invalid_password">Ingrese contraseña mayor a 6 digitos</string>

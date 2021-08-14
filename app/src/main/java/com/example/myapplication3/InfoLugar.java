@@ -2,7 +2,9 @@ package com.example.myapplication3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication3.pojo.EstadoBotones;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
@@ -25,6 +30,11 @@ public class InfoLugar extends AppCompatActivity {
     private TextView tv_ubicacion;
     private ImageView imageView;
     Button btn_maps;
+
+
+    //para firebase realtime
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
 
 
     @Override
@@ -73,6 +83,20 @@ public class InfoLugar extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
+
+        String estado = "true";
+        String estado2 = getIntent().getStringExtra("estadoAdap");
+        String lugar = getIntent().getStringExtra("lugarAdap");
+        if(estado.equals(estado2)){
+            EstadoBotones estadoBotones = new EstadoBotones(gmail, "like", lugar);
+            myRef = database.getReference().child("estado boton").push();
+            myRef.setValue(estadoBotones);
+            Toast.makeText(InfoLugar.this, "recibido", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
 

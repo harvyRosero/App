@@ -1,142 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo3"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextUsuario"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/bordes_redondos_edti"
-        android:drawableLeft="@mipmap/ic_launcher_user"
-        android:ems="12"
-        android:hint="Correo"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/black"
-        android:textColorHint="@color/cardview_dark_background"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bordes_redondos_edti"
-        android:drawableLeft="@mipmap/ic_launcher_clave"
-        android:ems="12"
-        android:hint="Contraseña"
-        android:password="true"
-        android:textColor="@color/black"
-        android:textColorHint="@color/cardview_dark_background"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btLogin"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="228dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/bordes_redondos"
-        android:fontFamily="monospace"
-        android:text="@string/btn_ing"
-        android:textColor="#0C0C0C"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_registrarse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="lollipop" />
-
-    <Button
-        android:id="@+id/btn_registrarse"
-        android:layout_width="228dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bordes_redondos"
-        android:fontFamily="monospace"
-        android:text="@string/btn_reg"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_olvide_contraseña"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="lollipop" />
-
-    <Button
-        android:id="@+id/btn_olvide_contraseña"
-        android:layout_width="228dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bordes_redondos"
-        android:fontFamily="monospace"
-        android:text="@string/btn_olvide_pass"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/signin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="lollipop" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signin"
-        android:layout_width="228dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/bordes_redondos"
-        android:text="googleloginText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="170dp"
-        android:layout_height="166dp"
-        android:background="@mipmap/logo_001"
-        app:layout_constraintBottom_toTopOf="@+id/editTextUsuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
-
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:background="#80000000"
+        >
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@mipmap/logo_001"
+            android:layout_marginTop="10sp"
+            />
 
         <TextView
-        android:id="@+id/textMensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#021168"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
+            />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="39dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/editTextUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/bordes_redondos_edti"
+            android:drawableLeft="@mipmap/ic_launcher_user"
+            android:ems="12"
+            android:hint="Correo"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/cardview_dark_background"
+            android:textSize="15sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bordes_redondos_edti"
+            android:drawableLeft="@mipmap/ic_launcher_clave"
+            android:ems="12"
+            android:hint="Contraseña"
+            android:password="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/cardview_dark_background"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/btLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btLogin"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/bordes_redondos"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/btn_ing"
+            android:textColor="#292828"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_registrarse"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/bordes_redondos"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/btn_reg"
+            android:textColor="#292828"
+            android:textSize="15sp"
+
+            />
+
+        <Button
+            android:id="@+id/btn_olvide_contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="20sp"
+            android:background="@drawable/bordes_redondos"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/btn_olvide_pass"
+            android:textColor="#292828"
+            android:textSize="15sp" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/bordes_redondos"
+            android:layout_marginRight="19sp"
+            android:layout_marginLeft="19sp"
+            android:layout_marginBottom="20sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -55,7 +55,8 @@
                     android:layout_gravity="center"
                     android:elevation="30sp"
                     android:contentDescription="@string/img_btn"
-                    android:src="@mipmap/lugar1" />
+                    android:src="@mipmap/lugar1"
+                    tools:targetApi="lollipop" />
 
 
                 <TextView
@@ -83,43 +84,63 @@
                     android:gravity="end"
                     android:text="@string/colombia"
                     android:textAlignment="viewEnd"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginEnd="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btn_home_like"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/black"
-                        android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/like"
-                        tools:targetApi="lollipop" />
+                        >
+
+                        <ImageButton
+                            android:id="@+id/btn_home_like"
+                            android:layout_width="match_parent"
+                            android:layout_height="40sp"
+                            android:backgroundTint="@color/purple_700"
+                            android:contentDescription="@string/img_btn"
+                            android:src="@mipmap/like02"
+                            tools:targetApi="lollipop"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/btn_home_like2"
+                            android:layout_width="match_parent"
+                            android:layout_height="40sp"
+                            android:backgroundTint="#375A01"
+                            android:contentDescription="@string/img_btn"
+                            android:src="@mipmap/like02"
+                            tools:targetApi="lollipop"
+                            />
+                    </LinearLayout>
+
+
 
                     <ImageButton
                         android:id="@+id/btn_home_comment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40sp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:backgroundTint="@color/purple_700"
                         android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/coment"
+                        android:src="@mipmap/coment03"
                         tools:targetApi="lollipop" />
 
                     <ImageButton
                         android:id="@+id/btn_home_agregar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40sp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/black"
+                        android:backgroundTint="@color/purple_700"
                         android:contentDescription="@string/img_btn"
-                        android:src="@mipmap/agregar"
+                        android:src="@mipmap/agregar03"
                         tools:targetApi="lollipop" />
-
 
                 </LinearLayout>
             </LinearLayout>

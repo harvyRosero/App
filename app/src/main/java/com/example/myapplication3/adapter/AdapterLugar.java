@@ -125,9 +125,10 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                         String lugar = estadoBotones.getNombre_lugar();
                         if(correo.equals(gmail)){
                             if(lugar.equals(lg.getNombre())){
-                                int i = 24123;
-                                holder.btn_like.setBackgroundColor(i);
+                                holder.btn_like.setVisibility(View.GONE);
 
+                            }else{
+                                holder.btn_like.setVisibility(View.VISIBLE);
                             }
 
                         }

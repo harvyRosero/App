@@ -282,27 +282,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser fUser){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        String personName = account.getDisplayName();
+        String email = account.getEmail();
+        //String n = account.getIdToken();
+        String image = account.getPhotoUrl().toString();
+
+        Usuarios usuario = new Usuarios( personName, email, "00000000000");
+        myRef = database.getReference().child("usuarios").push();
+        myRef.setValue(usuario);
+
+        UserImage userImage = new UserImage(image, email, personName);
+        myRef = database.getReference().child("foto perfil").push();
+        myRef.setValue(userImage);
+
+        //para guardar datos de manera local
+        SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_edit = pref.edit();
+        obj_edit.putString("gmail", email);
+        obj_edit.commit();
+
         if(account != null){
-            String personName = account.getDisplayName();
-            String email = account.getEmail();
-            String id = account.getId();
-            //String n = account.getIdToken();
-            String image = account.getPhotoUrl().toString();
-
-            Usuarios usuario = new Usuarios( personName, email, id);
-            myRef = database.getReference().child("usuarios").push();
-            myRef.setValue(usuario);
-
-            UserImage userImage = new UserImage(image, email, personName);
-            myRef = database.getReference().child("foto perfil").push();
-            myRef.setValue(userImage);
-
-            //para guardar datos de manera local
-            SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
-            SharedPreferences.Editor obj_edit = pref.edit();
-            obj_edit.putString("gmail", email);
-            obj_edit.commit();
-
             Intent i = new Intent(MainActivity.this, MainActivity2.class);
             startActivity(i);
         }

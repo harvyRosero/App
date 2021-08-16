@@ -4,8 +4,8 @@
     <item >
         <shape android:shape="oval"  >
             <corners android:radius="200dip" />
-            <stroke android:width="0dip" android:color="#98b600" />
-            <solid android:color="#4b7b00" />
+            <stroke android:width="5dip" android:color="#98b600" />
+            <solid android:color="#68A804" />
             <!--<gradient android:angle="-0" android:startColor="#DD2C00" android:endColor="#FFAB00" />-->
         </shape>
     </item>

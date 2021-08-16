@@ -19,7 +19,7 @@
             android:layout_height="40dp"
             android:layout_margin="10sp"
             android:layout_weight="4"
-            android:src="@mipmap/coment" />
+            android:src="@mipmap/coments03_1" />
 
         <EditText
             android:id="@+id/mt_comentario_coments_p"
@@ -34,10 +34,11 @@
         <ImageButton
             android:id="@+id/btn_enviar_mensaje_comentario"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="10sp"
+            android:layout_height="60sp"
             android:layout_weight="4"
-            android:src="@mipmap/ic_launcher" />
+            android:background="#C6E12E"
+            android:src="@mipmap/enviar03"
+            />
 
 
     </LinearLayout>

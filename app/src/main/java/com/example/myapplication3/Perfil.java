@@ -51,7 +51,7 @@ import java.util.ArrayList;
 
 public class Perfil extends AppCompatActivity {
 
-    private TextView tv_nombre, tv_gmail, tv_celular;
+    private TextView tv_nombre, tv_gmail, tv_celular, tv_nacionalidad;
     private ImageButton btn_home, btn_fav, btn_config;
     private Button btn_avtualizar_info;
     private ImageView uploadImage;
@@ -65,6 +65,7 @@ public class Perfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
 
         //obtener datos guardados locales
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
@@ -103,6 +104,7 @@ public class Perfil extends AppCompatActivity {
         tv_nombre = (TextView)findViewById(R.id.tv_nombre_perfil);
         tv_celular = (TextView)findViewById(R.id.tv_celular_perfil);
         tv_gmail = (TextView)findViewById(R.id.tv_gmail_perfil);
+        tv_nacionalidad = findViewById(R.id.tv_nacionalidad_perfil);
 
         //traer los datos del usuario
         ref = FirebaseDatabase.getInstance().getReference().child("usuarios");
@@ -119,6 +121,7 @@ public class Perfil extends AppCompatActivity {
                             tv_nombre.setText(nombre);
                             tv_gmail.setText(user.getCorreo());
                             tv_celular.setText(user.getNumero());
+                            tv_nacionalidad.setText(user.getNacionalidad());
 
                         }
                     }

@@ -58,25 +58,36 @@ public class FotoPerfil extends AppCompatActivity {
         et_celular = findViewById(R.id.et_editar_celular_perfil);
         et_nacionalidad = findViewById(R.id.et_editar_nacionalidad);
 
-        String nombre = et_nombre.getText().toString();
-        String celular = et_celular.getText().toString();
-        String nacionalidad = et_nacionalidad.getText().toString();
 
         btn_actualizar = findViewById(R.id.btn_actualizar_infp);
         btn_actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nombre = et_nombre.getText().toString();
+                String celular = et_celular.getText().toString();
+                String nacionalidad = et_nacionalidad.getText().toString();
+
                 if(!nombre.isEmpty() && !celular.isEmpty() && !nacionalidad.isEmpty()){
                     Usuarios usuarios = new Usuarios(nombre, gmail, celular, nacionalidad);
                     myRef = database.getReference().child("usuarios").push();
                     myRef.setValue(usuarios);
                     Toast.makeText(FotoPerfil.this, "Actualizacion de datos exitosa!", Toast.LENGTH_SHORT).show();
+                    et_nombre.setText("");
+                    et_celular.setText("");
+                    et_nacionalidad.setText("");
                 }else{
                     Toast.makeText(FotoPerfil.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
                 }
             }
         });
         btn_atras = findViewById(R.id.btn_atras_foto_perfil);
+        btn_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(FotoPerfil.this, Perfil.class);
+                startActivity(i);
+            }
+        });
 
         //abrir galeria celular
         myStorage = FirebaseStorage.getInstance().getReference();

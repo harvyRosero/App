@@ -272,6 +272,8 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
 
+
+
                 }else{
                     Toast.makeText(MainActivity.this, "Error2", Toast.LENGTH_LONG).show();
                     updateUI(null);
@@ -282,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser fUser){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+
         String personName = account.getDisplayName();
         String email = account.getEmail();
         String image = account.getPhotoUrl().toString();

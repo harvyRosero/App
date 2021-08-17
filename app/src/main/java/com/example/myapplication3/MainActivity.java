@@ -284,10 +284,9 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         String personName = account.getDisplayName();
         String email = account.getEmail();
-        //String n = account.getIdToken();
         String image = account.getPhotoUrl().toString();
 
-        Usuarios usuario = new Usuarios( personName, email, "00000000000");
+        Usuarios usuario = new Usuarios( personName, email, "00000000000", ".........");
         myRef = database.getReference().child("usuarios").push();
         myRef.setValue(usuario);
 

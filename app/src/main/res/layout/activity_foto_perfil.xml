@@ -65,7 +65,7 @@
                 />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/et_editar_nombre_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -79,7 +79,7 @@
                 android:textSize="18sp"/>
 
             <EditText
-                android:id="@+id/editTextPhone3"
+                android:id="@+id/et_editar_celular_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -93,7 +93,7 @@
                 android:textSize="18sp"/>
 
             <EditText
-                android:id="@+id/editTextTextPersonName3"
+                android:id="@+id/et_editar_nacionalidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -111,7 +111,7 @@
                 />
 
             <Button
-                android:id="@+id/btn_hecho"
+                android:id="@+id/btn_atras_foto_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_atras"

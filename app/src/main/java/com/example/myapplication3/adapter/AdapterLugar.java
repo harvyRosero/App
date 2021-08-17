@@ -126,9 +126,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                         if(correo.equals(gmail)){
                             if(lugar.equals(lg.getNombre())){
                                 holder.btn_like.setVisibility(View.GONE);
-
-                            }else{
-                                holder.btn_like.setVisibility(View.VISIBLE);
                             }
 
                         }

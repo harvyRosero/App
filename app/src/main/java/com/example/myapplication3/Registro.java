@@ -92,7 +92,7 @@ public class Registro extends AppCompatActivity {
                                         Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_LONG).show();
 
                                         //envio de datos a firebase realtime
-                                        Usuarios usuario = new Usuarios( user, mail, celular);
+                                        Usuarios usuario = new Usuarios( user, mail, celular, "......");
                                         myRef = database.getReference().child("usuarios").push();
                                         myRef.setValue(usuario);
 

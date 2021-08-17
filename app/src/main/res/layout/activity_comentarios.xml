@@ -47,7 +47,7 @@
         android:id="@+id/recycler_v_comentario_p"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6dp"
         android:background="#4FADDC68">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,13 +37,13 @@ public class FotoPerfil extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-    Button btn_elegir_img, btn_enviar_img;
+    Button btn_elegir_img, btn_actualizar, btn_atras;
+    EditText et_nombre, et_celular, et_nacionalidad;
 
     private StorageReference myStorage;
     private static final int GALERY_INTENT = 1;
     private ProgressDialog mProgressDialog;
     private ImageView uploadImage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,29 @@ public class FotoPerfil extends AppCompatActivity {
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String gmail = dato.getString("gmail", "");
 
+        et_nombre = findViewById(R.id.et_editar_nombre_perfil);
+        et_celular = findViewById(R.id.et_editar_celular_perfil);
+        et_nacionalidad = findViewById(R.id.et_editar_nacionalidad);
 
+        String nombre = et_nombre.getText().toString();
+        String celular = et_celular.getText().toString();
+        String nacionalidad = et_nacionalidad.getText().toString();
+
+        btn_actualizar = findViewById(R.id.btn_actualizar_infp);
+        btn_actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!nombre.isEmpty() && !celular.isEmpty() && !nacionalidad.isEmpty()){
+                    Usuarios usuarios = new Usuarios(nombre, gmail, celular, nacionalidad);
+                    myRef = database.getReference().child("usuarios").push();
+                    myRef.setValue(usuarios);
+                    Toast.makeText(FotoPerfil.this, "Actualizacion de datos exitosa!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(FotoPerfil.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btn_atras = findViewById(R.id.btn_atras_foto_perfil);
 
         //abrir galeria celular
         myStorage = FirebaseStorage.getInstance().getReference();
@@ -67,7 +90,6 @@ public class FotoPerfil extends AppCompatActivity {
                 startActivityForResult(i, GALERY_INTENT);
             }
         });
-
 
         mProgressDialog = new ProgressDialog(this);
 
@@ -157,16 +179,11 @@ public class FotoPerfil extends AppCompatActivity {
 
                                 }
                             });
-
-
-
                         }
                     });
-
                     Toast.makeText(FotoPerfil.this, "cargando imagen...", Toast.LENGTH_LONG).show();
                 }
             });
-
         }
     }
 }

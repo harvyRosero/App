@@ -61,8 +61,6 @@ public class Perfil extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     DatabaseReference ref;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,10 +127,8 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
 
         //ir a foto perfil
         uploadImage = (ImageView)findViewById(R.id.uploadImageVp);
@@ -143,7 +139,6 @@ public class Perfil extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
 
         //traer imagen de usuario
 

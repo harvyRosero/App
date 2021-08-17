@@ -4,14 +4,16 @@ public class Usuarios {
     String nombre;
     String correo;
     String numero;
+    String nacionalidad;
 
     public Usuarios() {
     }
 
-    public Usuarios(String nombre, String correo, String numero) {
+    public Usuarios(String nombre, String correo, String numero, String nacionalidad) {
         this.nombre = nombre;
         this.correo = correo;
         this.numero = numero;
+        this.nacionalidad = nacionalidad;
     }
 
     public String getNombre() {
@@ -36,5 +38,13 @@ public class Usuarios {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
 }

@@ -46,6 +46,11 @@ public class MainActivity2 extends AppCompatActivity  {
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String gmail = dato.getString("gmail", "");
 
+        if(gmail == null){
+            Intent i = new Intent(MainActivity2.this, MainActivity.class);
+            startActivity(i);
+        }
+
         //funciones botones
 
         btn_fav = (ImageButton)findViewById(R.id.btn_fav2);

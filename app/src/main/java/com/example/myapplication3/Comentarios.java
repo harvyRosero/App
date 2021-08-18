@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication3.adapter.AdapterComentario;
@@ -34,6 +35,7 @@ public class Comentarios extends AppCompatActivity {
 
     EditText mt_mensaje;
     ImageButton btn_enviar;
+    TextView tv_titulo;
 
     //para enviar datos a firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -50,13 +52,16 @@ public class Comentarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comentarios);
 
+        tv_titulo = findViewById(R.id.tv_titulo_comentarios);
+        String titulo = getIntent().getStringExtra("lugar");
+        tv_titulo.setText(titulo);
+
         //obtener datos guardados locales
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String gmail = dato.getString("gmail", "");
 
         mt_mensaje = findViewById(R.id.mt_comentario_coments_p);
         btn_enviar = findViewById(R.id.btn_enviar_mensaje_comentario);
-
 
         // traer datos de firebase para enviar
         ref = FirebaseDatabase.getInstance().getReference().child("foto perfil");
@@ -94,7 +99,6 @@ public class Comentarios extends AppCompatActivity {
                                     }else{
                                         Toast.makeText(Comentarios.this, "mensaje vacio", Toast.LENGTH_SHORT).show();
                                     }
-
                                 }
                             });
                         }
@@ -129,20 +133,14 @@ public class Comentarios extends AppCompatActivity {
                         if(uc.getLugar().equals(nombre_lugar)){
                             lista.add(uc);
                         }
-
                     }
                     adapter.notifyDataSetChanged();
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
-
-
     }
 }

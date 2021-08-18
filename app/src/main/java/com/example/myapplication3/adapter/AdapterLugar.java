@@ -120,15 +120,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                        EstadoBotones estadoBotones = snapshot1.getValue(EstadoBotones.class);
-                        String correo = estadoBotones.getCorreo();
-                        String lugar = estadoBotones.getNombre_lugar();
-                        if(correo.equals(gmail)){
-                            if(lugar.equals(lg.getNombre())){
-                                holder.btn_like.setVisibility(View.GONE);
-                            }
 
-                        }
                     }
                 }
             }
@@ -148,6 +140,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
                 Intent i = new Intent(holder.itemView.getContext(), InfoLugar.class);
                 i.putExtra("estadoAdap", "true");
                 i.putExtra("lugarAdap",lg.getNombre());
+                Toast.makeText(holder.itemView.getContext(), "like", Toast.LENGTH_SHORT).show();
                 holder.itemView.getContext().startActivity(i);
             }
         });
@@ -188,6 +181,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             btn_agregar = itemView.findViewById(R.id.btn_home_agregar);
             btn_like = itemView.findViewById(R.id.btn_home_like);
             btn_comment = itemView.findViewById(R.id.btn_home_comment);
+            btn_dislike = itemView.findViewById(R.id.btn_home_like2);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
 

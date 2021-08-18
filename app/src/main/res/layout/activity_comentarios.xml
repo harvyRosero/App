@@ -43,6 +43,20 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_titulo_comentarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginBottom="5sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_v_comentario_p"
         android:layout_width="match_parent"

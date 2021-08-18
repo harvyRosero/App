@@ -3,7 +3,9 @@ package com.example.myapplication3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -91,6 +93,12 @@ public class Registro extends AppCompatActivity {
                                     if(task.isSuccessful() ){
                                         Toast.makeText(Registro.this, "usuario creado con exito", Toast.LENGTH_LONG).show();
 
+                                        //para guardar datos de manera local
+                                        SharedPreferences pref = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor obj_edit = pref.edit();
+                                        obj_edit.putString("gmail", mail);
+                                        obj_edit.commit();
+
                                         //envio de datos a firebase realtime
                                         Usuarios usuario = new Usuarios( user, mail, celular, "......");
                                         myRef = database.getReference().child("usuarios").push();
@@ -100,7 +108,7 @@ public class Registro extends AppCompatActivity {
                                         myRef = database.getReference().child("foto perfil").push();
                                         myRef.setValue(userImage);
 
-                                        Intent i = new Intent(Registro.this, MainActivity.class);
+                                        Intent i = new Intent(Registro.this, MainActivity2.class);
                                         startActivity(i);
                                     }else{
                                         String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();

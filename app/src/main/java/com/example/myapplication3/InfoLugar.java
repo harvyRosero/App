@@ -1,5 +1,6 @@
 package com.example.myapplication3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -17,15 +18,18 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication3.pojo.EstadoBotones;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 
 public class InfoLugar extends AppCompatActivity {
 
-    private TextView tv_titulo, tv_clima, tv_recomendaciones;
+    private TextView tv_titulo, tv_clima, tv_recomendaciones, tv_like;
     private TextView tv_descripcion;
     private TextView tv_ubicacion;
     private ImageView imageView;
@@ -35,6 +39,7 @@ public class InfoLugar extends AppCompatActivity {
     //para firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference ref;
 
 
     @Override
@@ -42,7 +47,8 @@ public class InfoLugar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_lugar);
 
-        // new getImageURL(imageView).execute(urlImage);
+        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String gmail = dato.getString("gmail", "");
 
         tv_titulo = findViewById(R.id.tv_titulo_info);
         tv_descripcion = findViewById(R.id.tv_descripcion_info);
@@ -50,6 +56,7 @@ public class InfoLugar extends AppCompatActivity {
         tv_recomendaciones = findViewById(R.id.tv_recomendaciones_info);
         tv_clima = findViewById(R.id.tv_clima_info);
         btn_maps = findViewById(R.id.btn_ir_a_maps);
+        tv_like = findViewById(R.id.tv_likes_info);
 
         String titulo = getIntent().getStringExtra("titulo");
         String descripcion = getIntent().getStringExtra("descripcion");
@@ -83,20 +90,6 @@ public class InfoLugar extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        String gmail = dato.getString("gmail", "");
-
-        String estado = "true";
-        String estado2 = getIntent().getStringExtra("estadoAdap");
-        String lugar = getIntent().getStringExtra("lugarAdap");
-        if(estado.equals(estado2)){
-            EstadoBotones estadoBotones = new EstadoBotones(gmail, "like", lugar);
-            myRef = database.getReference().child("estado boton").push();
-            myRef.setValue(estadoBotones);
-            Toast.makeText(InfoLugar.this, "recibido", Toast.LENGTH_LONG).show();
-            finish();
-        }
     }
 
 

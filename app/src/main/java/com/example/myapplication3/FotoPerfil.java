@@ -121,6 +121,7 @@ public class FotoPerfil extends AppCompatActivity {
                                     .transform(new Perfil.CircleTransform())
                                     .error(R.mipmap.foto_perfil)
                                     .into(uploadImage);
+                            Toast.makeText(FotoPerfil.this, "Imagen actulizada!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

@@ -14,7 +14,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="-2dp"
         android:background="#cce845"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
@@ -71,28 +73,52 @@
     <Button
         android:id="@+id/btn_cerrar_sesion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="503dp"
         android:background="@drawable/bordes_redondos"
         android:fontFamily="monospace"
         android:text="Cerrar sesion" />
 
     <ImageView
         android:id="@+id/iv_mia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="269dp"
+        android:layout_height="236dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginLeft="117dp"
-        android:layout_marginTop="174dp" />
+        android:layout_marginStart="74dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="58dp"
+        android:src="@drawable/guia2" />
+
+    <TextView
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="wrap_content"
+        android:layout_height="266dp"
+        android:layout_below="@+id/iv_mia"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="165dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Travelapp es una aplicación desarrollada para conocer los sitios turísticos del país, donde queda, sugerencias y características del lugar, con la experiencia de usuarios tener recomendaciones y links de los mejores sitios, como agregar a favoritos por cada usuario con sus comentarios. "
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

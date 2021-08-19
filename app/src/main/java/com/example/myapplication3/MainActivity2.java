@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -37,10 +40,28 @@ public class MainActivity2 extends AppCompatActivity  {
     AdapterLugar adapter;
     LinearLayoutManager lm;
 
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        mProgressDialog = new ProgressDialog(this);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(!isConnected){
+            mProgressDialog.setTitle("Sin conexion a internet!");
+            mProgressDialog.setMessage("Por favor revise su conexion a internet y vuelva a ingresar");
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.show();
+        }
+
 
         //obtener datos guardados locales
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);

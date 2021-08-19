@@ -90,6 +90,8 @@ public class InfoLugar extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
     }
 
 

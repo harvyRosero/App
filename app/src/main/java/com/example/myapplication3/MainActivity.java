@@ -1,8 +1,11 @@
 package com.example.myapplication3;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -56,12 +59,29 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "Google";
     private FirebaseAuth mAuth;
     private int RC_SIGN_IN = 0;
+    private ProgressDialog mProgressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //para revisar la conexion a internet
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        mProgressDialog = new ProgressDialog(this);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(!isConnected){
+            mProgressDialog.setTitle("Sin Conexion a internet!");
+            mProgressDialog.setMessage("Por favor revisa tu conexion a internet y vuelve a ingresar");
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.show();
+        }
 
         signInButton = findViewById(R.id.sign_in_button1);
         mAuth = FirebaseAuth.getInstance();

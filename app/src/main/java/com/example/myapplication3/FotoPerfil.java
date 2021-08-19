@@ -141,7 +141,7 @@ public class FotoPerfil extends AppCompatActivity {
 
         if(requestCode == GALERY_INTENT && resultCode == RESULT_OK){
 
-            mProgressDialog.setTitle("subiendo...");
+            mProgressDialog.setTitle("cargando");
             mProgressDialog.setMessage("subiendo foto...");
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();

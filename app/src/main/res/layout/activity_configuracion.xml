@@ -97,7 +97,7 @@
         android:layout_marginLeft="75dp"
         android:layout_marginTop="85dp"
         android:autoSizeTextType="uniform"
-        android:src="@drawable/guia2" />
+        android:src="@mipmap/guia" />
 
     <TextView
         android:id="@+id/editTextTextMultiLine"
@@ -120,7 +120,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="sans-serif-medium"
         android:scrollbars="vertical|horizontal"
-        android:text="Travelapp es una aplicación desarrollada para conocer los sitios turísticos del país, su localizacion, sugerencias y características del lugar, brindando experiencia al usuarios con sus recomendaciones y links de los mejores sitios, adicionalmente los sitios favoritos del usuario con sus comentarios. "
+        android:text="Travelapp es una aplicación desarrollada para conocer los sitios turísticos del país, su localizacion, sugerencias y características del lugar, brindando experiencia al usuarios con sus recomendaciones y links de los mejores sitios, adicionalmente los sitios favoritos del usuario y sus comentarios. "
         android:textSize="15sp"
         android:textStyle="bold" />
 

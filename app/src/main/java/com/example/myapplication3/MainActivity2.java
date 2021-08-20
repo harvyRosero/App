@@ -18,6 +18,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.myapplication3.adapter.AdapterLugar;
+import com.example.myapplication3.pojo.EstadoBotones;
 import com.example.myapplication3.pojo.Lugares;
 import com.example.myapplication3.pojo.Usuarios;
 import com.google.firebase.database.DataSnapshot;
@@ -61,7 +62,6 @@ public class MainActivity2 extends AppCompatActivity  {
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();
         }
-
 
         //obtener datos guardados locales
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);

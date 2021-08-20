@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
             irAhome();
         }
 
-
         //libreria de autenticacion
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         awesomeValidation.addValidation(this, R.id.et_gmail_registro, Patterns.EMAIL_ADDRESS, R.string.invalid_gmail);

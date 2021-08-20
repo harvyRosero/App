@@ -52,6 +52,7 @@ public class Favoritos extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
 
+
         //obtener datos del amcenamiento local
         SharedPreferences dato = getSharedPreferences("datos", Context.MODE_PRIVATE);
         gmail = dato.getString("gmail", "");

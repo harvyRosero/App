@@ -28,6 +28,8 @@ import com.example.myapplication3.pojo.AgregarFavoritos;
 import com.example.myapplication3.pojo.EstadoBotones;
 import com.example.myapplication3.pojo.Lugares;
 import com.example.myapplication3.pojo.Usuarios;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,10 +46,12 @@ import java.util.List;
 
 public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLugares> {
     List<Lugares> lugaList;
+    List<EstadoBotones> BotonesList;
 
-    public AdapterLugar(List<Lugares> lugaList) {
+    public AdapterLugar(List<Lugares> lugaList ) {
         this.lugaList = lugaList;
     }
+
 
     //para firebase realtime
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -72,7 +76,7 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
         Picasso.get()
                 .load(lg.getImagen())
                 .error(R.drawable.alogo)
-                .resize(700, 600)
+                .resize(800, 700)
                 .into(holder.iv_lugar);
 
         holder.btn_agregar.setOnClickListener(new View.OnClickListener() {
@@ -115,48 +119,46 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
 
 
         //funcion botones
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String id = user.getUid();
         holder.btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //traer los datos del boton
-                ref = FirebaseDatabase.getInstance().getReference().child("estado boton");
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                                EstadoBotones boton = snapshot1.getValue(EstadoBotones.class);
-                                String lugar1 = boton.getNombre_lugar();
-                                String correo = boton.getCorreo();
+                EstadoBotones boton = new EstadoBotones(gmail, "ok", lg.getNombre());
+                myRef = database.getReference().child("like lugares").push();
+                myRef.setValue(boton);
 
-                                if(gmail.equals(correo)){
-                                    if(lg.getNombre().equals(boton.getNombre_lugar())){
-                                        Toast.makeText(holder.itemView.getContext(), "ya diste like", Toast.LENGTH_SHORT).show();
-                                    }else if(!lg.getNombre().equals(lugar1)){
-                                        Toast.makeText(holder.itemView.getContext(), "nuevo like", Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }
-
-                            }
-                        }else{
-                            Toast.makeText(holder.itemView.getContext(), "like", Toast.LENGTH_SHORT).show();
-                            EstadoBotones estadoBotones = new EstadoBotones(gmail, "like", lg.getNombre());
-                            myRef = database.getReference().child("estado boton").push();
-                            myRef.setValue(estadoBotones);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-
+                holder.btn_like.setVisibility(View.GONE);
             }
         });
+
+        //traer los datos del usuario
+        ref = FirebaseDatabase.getInstance().getReference().child("like lugares");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                        EstadoBotones botones = snapshot1.getValue(EstadoBotones.class);
+                        if(botones.getCorreo().equals(gmail)){
+                            if(lg.getNombre().equals(botones.getNombre_lugar())){
+                                holder.btn_like.setVisibility(View.GONE);
+                            }else{
+                                holder.btn_dislike.setVisibility(View.VISIBLE);
+                            }
+
+                        }else{
+                            holder.btn_like.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
 
 
 
@@ -179,11 +181,8 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
     public static class ViewHolderLugares extends RecyclerView.ViewHolder {
 
         TextView tv_nombre_lugar, tv_descripcion_lugar,tv_ubicacion_lugar, url_imagen;
-        ImageButton btn_agregar, btn_like, btn_comment, btn_dislike;
+        ImageButton btn_agregar,  btn_comment, btn_dislike, btn_like;
         ImageView iv_lugar;
-        Context ctx;
-        Boolean likechecker;
-
 
         public ViewHolderLugares(@NonNull View itemView) {
             super(itemView);
@@ -198,9 +197,6 @@ public class AdapterLugar extends RecyclerView.Adapter<AdapterLugar.ViewHolderLu
             btn_dislike = itemView.findViewById(R.id.btn_home_like2);
 
             iv_lugar = itemView.findViewById(R.id.iv_image_lugar);
-
         }
-
     }
-
 }
